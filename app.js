@@ -4,10 +4,16 @@ const app = express();
 const mongoose = require("mongoose");
 const port = process.env.PORT || 3000;
 
-app.get("/", (req,res)=>{
 
-    res.send("Working");
+var indexRouter = require("./routes/index");
 
+//index router
+app.use("/", indexRouter);
+
+
+
+app.listen(process.env.PORT, ()=>{
+    console.log(`http://localhost:${port}`);
 });
 
-app.listen(process.env.PORT, ()=>{console.log(`http://localhost:${port}`);});
+module.exports = app;
