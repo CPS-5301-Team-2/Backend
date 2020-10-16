@@ -2,8 +2,12 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
+mongoose.connect(process.env.MONGO_URI);
+const users = require("./model/users");
 
+// Express Configs
+app.set('view engine', 'ejs');
 
 var indexRouter = require("./routes/index");
 
