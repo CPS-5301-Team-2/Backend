@@ -2,14 +2,24 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+var path = require('path');
+var cookieParser = require('cookie-parser');
 const port = process.env.PORT || 3001;
 mongoose.connect(process.env.MONGO_URI);
 const users = require("./model/users");
 
-// Express Configs
+//router path
+var indexRouter = require("./routes/index");
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-var indexRouter = require("./routes/index");
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, './public')));
 
 //index router
 app.use("/", indexRouter);
