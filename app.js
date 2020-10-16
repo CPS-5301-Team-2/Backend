@@ -6,7 +6,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 const port = process.env.PORT || 3001;
 mongoose.connect(process.env.MONGO_URI);
-const users = require("./model/users");
 
 //router path
 var indexRouter = require("./routes/index");
