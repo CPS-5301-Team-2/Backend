@@ -9,6 +9,7 @@ mongoose.connect(process.env.MONGO_URI);
 
 //router path
 var indexRouter = require("./routes/index");
+var admininfo = require("./routes/admininfo");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, './public')));
 
 //index router
 app.use("/", indexRouter);
+app.use("/adminminfo",admininfo);
 
 
 // catch 404 and forward to error handler
@@ -40,6 +42,7 @@ app.use(function (err, req, res, next) {
     res.render("error");
 });
 
+//port listen 
 app.listen(process.env.PORT, ()=>{
     console.log(`http://localhost:${port}`);
 });
