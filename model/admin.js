@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-var user = mongoose.Schema({
+var admin = mongoose.Schema({
 
     name: {type: String, required: true, maxlength: 50},
     username: {type: String, required: true, maxlength: 10},
@@ -10,4 +10,4 @@ var user = mongoose.Schema({
 
 });
 
-module.exports = mongoose.model("Users", user);
+module.exports = mongoose.model("admin", admin);
