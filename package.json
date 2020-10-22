@@ -31,5 +31,8 @@
     "jest": "^26.5.3",
     "nodemon": "^2.0.4"
   },
-  "keywords": []
+  "keywords": [],
+  "jest": {
+    "testEnvironment": "node"
+  }
 }
