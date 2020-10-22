@@ -1,25 +1,69 @@
-const mongoose = require("mongoose");
-const { findById } = require("../model/users");
+const assert = require("assert");
+const user = require("../model/users");
+var newUser;
 
-describe('insert', () => {
-    beforeAll(async () => {
-        await mongoose.connect(process.env.MONGO_URI);
+describe('user model testing',  () => {
+
+    describe('testing with one user', ()=>{
+        it('creates a new user', (done)=>{
+            newUser = new user({
+                name: "Testy McTestFace",
+                username: "test",
+                password: "password",
+                email: "test@testing.com"
+            });
+    
+            newUser.save(done());
+        });
+    
+        it('should not create a user if name, username, password, or email are missing', (done)=>{
+            newUser = new user({});
+    
+            newUser.save((err, doc)=>{
+                if(err){return done();}
+                assert.fail("User should not save");
+            });
+        });
+    
+        it('should not create a user if name is more than 50 characters', (done)=>{
+            newUser = new user({
+                name: "1234567890111213141516171819202122232425262712345678901112131415161718192021222324252627",
+                username: "test",
+                password: "password",
+                email: "test@testing.com"
+            });
+    
+            newUser.save((err, doc)=>{
+                if(err){return done();}
+                assert.fail("User should not save");
+            });
+        });
     });
+    
+    describe("testing with 2 users", ()=>{
 
-    it('should insert doc into collection', async ()=>{
-
-        const users = require("../model/users");
-        const mock = new users({
-            name: "Testy McTestFace",
-            username: "jestTests",
-            password: "password",
-            email: "test@testing.com",
-            position: "Test"
+        beforeEach(()=>{
+            newUser = new user({
+                name: "Testing",
+                username: "test",
+                password: "password",
+                email: "test@testing.com"
+            });
+            newUser.save();
         });
 
-        mock.save();
-        var insertedUser = await users.findById(mock._id);
-        expect(insertedUser).toEqual(mock);
+        it('should not create user if username already exist', (done)=>{
+            newUser2 = new user({
+                name: "Testing2",
+                username: "test",
+                password: "password",
+                email: "test@testing.com"
+            });
 
+            newUser.save((err,doc)=>{
+                if(err){return done();}
+                return assert.fail("Should not have inserted into db");
+            });
+        });
     });
 });

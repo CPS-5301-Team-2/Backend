@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "jest"
+    "test": "mocha --timeout 10000"
   },
   "repository": {
     "type": "git",
@@ -24,15 +24,12 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "init": "^0.1.2",
+    "mocha": "^8.2.0",
     "mongoose": "^5.10.9",
     "sinon": "^9.2.0"
   },
   "devDependencies": {
-    "jest": "^26.5.3",
     "nodemon": "^2.0.4"
   },
-  "keywords": [],
-  "jest": {
-    "testEnvironment": "node"
-  }
+  "keywords": []
 }

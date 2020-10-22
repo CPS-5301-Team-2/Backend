@@ -9,6 +9,7 @@ mongoose.connect(process.env.MONGO_URI);
 
 //router path
 var indexRouter = require("./routes/index");
+var authRouter = require("./routes/auth");
 var adminList = require("./routes/api/listget");
 
 // view engine setup
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, './public')));
 
 //index router
 app.use("/", indexRouter);
+app.use("/auth", authRouter)
 app.use("/list", adminList);
 
 
