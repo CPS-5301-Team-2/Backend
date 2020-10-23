@@ -3,10 +3,16 @@ var router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../model/users");
 const SALT_PASSES = process.env.SALT_PASSES || 8;
+const passport = require("passport");
+const app = require('../app');
 
-router.post("/login", (req,res)=>{
+router.post("/login", 
+    passport.authenticate('local',{
+        failureRedirect: "/",
+        failureFlash: true
+    }), (req,res)=>{
 
-    // TODO make login post to authenticate user
+    // TODO actions after user gets authenticated
 
 });
 
@@ -77,6 +83,12 @@ router.post("/create", async (req,res)=>
     } catch (err){
         console.log(err.message);
     }
+});
+
+// Logs user out.
+router.get('/logout', (req, res)=>{
+    req.logout();
+    res.redirect("/");
 });
 
 module.exports = router;
