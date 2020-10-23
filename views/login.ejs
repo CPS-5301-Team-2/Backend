@@ -10,25 +10,25 @@
 <body>
     <div id="login">
         <div class="d-flex justify-content-center">
-            <h1>REALestate Login</h1>
+            <h1 id="title">REALestate Login</h1>
         </div>
         <div id = "test" class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="" method="post">
-                            <h3 class="text-center text-info">Login</h3>
+                    <h3 id="Unauthorized" class="text-center">Unauthorized access to this system  is prohibited</h3>
+                    <div id="login-box" class="align-self-center">
+                        <form id="login-form" class="col-lg-6" action="" method="post">
                             <div class="form-group">
-                                <label for="username" class="text-info">Username:</label><br>
+                                <label for="username" >Username:</label><br>
                                 <input type="text" name="username" id="username" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="password" class="text-info">Password:</label><br>
+                                <label for="password" >Password:</label><br>
                                 <input type="text" name="password" id="password" class="form-control">
                             </div>
                             <div class="form-group d-flex justify-content-around">
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="login">
-                                <input type="submit" name="forgot" class="btn btn-info btn-md" value="forgot password">
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Login">
+                                <input type="submit" name="forgot" class="btn btn-info btn-md" value="Forgot Password">
                             </div>
                         </form>
                     </div>
