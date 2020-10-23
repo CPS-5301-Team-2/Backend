@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../model/users");
+const SALT_PASSES = process.env.SALT_PASSES || 8;
 
 router.post("/login", (req,res)=>{
 
@@ -52,13 +53,13 @@ router.post("/create", async (req,res)=>
         }
 
         //hash password
-        const passwordhash = await bcrypt.hash(password, 8);
-        console.log(passwordhash);
+        const passwordHash = await bcrypt.hash(password, SALT_PASSES);
+        console.log(passwordHash);
 
         user = new User({
             name,
             username,
-            password: passwordhash,
+            password: passwordHash,
             email,
             phone, 
             rank: "User"

@@ -1,11 +1,12 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
 var path = require('path');
 var cookieParser = require('cookie-parser');
 const InitiateMongoServer = require("./dbconfig");
 const expressValidator  = require('express-validator'); //npm install express-validator@5.3.0
+const passport = require("passport");
+var session = require('express-session');
 
 const port = process.env.PORT || 3001;
 
@@ -20,12 +21,24 @@ var auth = require("./routes/auth.js");
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-
+// Body Parser Configs
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './public')));
 app.use(expressValidator());
+
+// Session Configs
+app.use(session({
+    secret: "Change this later",
+    resave: false,
+    saveUninitialized: true
+}));
+
+// Passport Configs
+require("./config/passport")(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 
 //index router
 app.use("/", indexRouter);
