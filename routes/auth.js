@@ -14,7 +14,41 @@ router.post("/login",
 
     // TODO actions after user gets authenticated
 
+        // option1: if rank is user, redirect ("/user") <== this will be for regular user
+        //             else redirect to ("/admin") <== this will be admin get (admin only)
 });
+
+/*example for isLoggedIn for middleware */
+// async(req,res,next)=>{
+//     console.log(req.cookies);
+//     if(req.cookies.jwt){
+//         try {
+//             //1) verify the token
+//             const decoded = await promisify(jwt.verify)(req.cookies.jwt,
+//                 process.env.JWT_SECRET
+//                 );
+                
+//                 //2)check if user is still available
+//             config.imcdb.query('SELECT * FROM node_login where UserID = ?', [decoded.id], (error, result) => {
+//                 console.log(result);
+
+//                 if(!result){
+//                     return next();
+//                 }
+
+//                 req.user = result[0];
+//                 return next();
+//             });
+//                 console.log(decoded);
+                
+//         } catch (error) {
+//             console.log(error);
+//             return next();
+//         }
+//     }else{
+//         next()
+//     }
+// }
 
 router.post("/create", async (req,res)=>
 {
