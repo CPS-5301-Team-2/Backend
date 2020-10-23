@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const User = require("../../model/users");
+const User = require("../model/users");
 
 router.post("/login", (req,res)=>{
 
@@ -10,11 +9,10 @@ router.post("/login", (req,res)=>{
 
 });
 
-router.post("/create", (req,res)=>{
+router.post("/create", async (req,res)=>
+{
 
     //create from admin 
-
-    //Eunbi --will update 
     req.check('name', "Name is required").notEmpty();
     req.check('username', "Username is required").notEmpty();
     req.check('password', "password is required").notEmpty();
@@ -33,7 +31,8 @@ router.post("/create", (req,res)=>{
     //check for input validation causes
     const errors = req.validationErrors();
     //if error, show the first error
-    if(errors){
+    if(errors)
+    {
         const firstError = errors.map(error =>error.msg)[0];
         console.group(firstError);
         return res.json({error: firstError});
@@ -41,6 +40,42 @@ router.post("/create", (req,res)=>{
 
     const{name, username, password, email, phone} = req.body;
 
+    try
+    {
+        //check if username is already taken
+        let user = await User.findOne({username});
+        if(user)
+        {
+            return res.status(400).json({
+                error: "User already exists"
+            });
+        }
+
+        //hash password
+        const passwordhash = await bcrypt.hash(password, 8);
+        console.log(passwordhash);
+
+        user = new User({
+            name,
+            username,
+            password: passwordhash,
+            email,
+            phone, 
+            rank: "User"
+        });
+
+        await user.save(function(err){
+            if(err){
+                console.log(err);
+            }else{
+                res.json({
+                    message: "success"
+                });
+            }
+        });
+    } catch (err){
+        console.log(err.message);
+    }
 });
 
 module.exports = router;
