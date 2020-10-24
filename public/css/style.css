@@ -1,13 +1,14 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #17a2b8;
+    /* background-color: #17a2b8; */
     height: 100vh;
   }
 
 #title {
-    font-size:100px;
-    color: black;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size:100px;
+  color: black;
 }
 
 #login-box #login-form{
@@ -28,22 +29,23 @@ body {
 
   #Unauthorized {
     color:red;
-    font-size:20px;
+    font-size:25px;
   }
 
+.form-group label
+{
+  font-size:30px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
 
-  /* .text-info
-  {
-    font-size:30px;
-    color: red;
-  }
+.navbar-title
+{
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size:40px;
+  color: black;
+  line-height: 5px;
+}
 
-  #login-box
-  {
-    border: 1px solid #ac0f0f;
-  }
-
-  #login
-  {
-    background-color: #17a2b8;
-  } */
+.bodyNav { 
+  padding-top: 65px; 
+}
