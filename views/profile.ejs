@@ -1,0 +1,127 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REALestate Profile</title>
+    <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/lib/jQuery-3.4.1.js"></script>
+    <script src="/js/lib/bootstrap.min.js"></script>
+</head>
+
+<nav class="navbar fixed-top navbar-light bg-info">
+    <div class="navbar-left">
+        <a href="homepage" class="btn btn-secondary" role="button">Homepage</a>
+    </div>
+    
+    <p class="navbar-title">REALestate</p>
+    
+    <div class="navbar-right ">
+        <div class="btn-group ">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+              Dropdown
+            </button>
+            <div class="dropdown-menu dropdown-menu-right p-3 mb-2 bg-light text-white">
+                <a class="dropdown-item" href="#">Contact</a>
+                <a class="dropdown-item text-danger" href="#">Logout</a>           
+             </div>
+        </div>
+    </div>
+  </nav>
+
+  <body class="bodyNav">
+
+    <div class="container">
+    <div class="row flex-lg-nowrap">
+      <div class="col">
+        <div class="row">
+          <div class="col mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="e-profile">
+                  <div class="row">
+                    <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                      <div class="text-center text-sm-left mb-2 mb-sm-0">
+                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Welcome: Steve Rich</h4>                        
+                      </div>
+        <!-- thoughts on a profile badge -->
+                      <div class="text-center text-sm-right">
+                        <span class="badge badge-dark">Admin</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-content pt-3">
+                    <div class="tab-pane active">
+                      <form class="form" novalidate="">
+                        <div class="row">
+                          <div class="col">
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label id="labelProfile">Name</label>
+                                  <input class="form-control" type="text" name="name" value="Steve Rich">
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                  <label id="labelProfile">Username</label>
+                                  <input class="form-control" type="text" name="username" value="srich">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label id="labelProfile">Email</label>
+                                  <input class="form-control" type="text" value="SteveRich@house4you.org">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-sm-6 mb-3">
+                            <div class="mb-2"><b>Update Password</b></div>
+                            <hr class="ProfileHR">
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label id="labelProfile">Current Password</label>
+                                  <input class="form-control" type="password" placeholder="••••••">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label id="labelProfile">New Password</label>
+                                  <input class="form-control" type="password" placeholder="••••••">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label id="labelProfile">Confirm <span class="d-none d-xl-inline">Password</span></label>
+                                  <input class="form-control" type="password" placeholder="••••••"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col d-flex justify-content-end">
+                            <button class="btn btn-primary" type="submit">Update Changes</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+  </body>

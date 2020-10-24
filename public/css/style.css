@@ -1,3 +1,5 @@
+  /* login
+  ========================================= */
   body {
   margin: 0;
   padding: 0;
@@ -38,6 +40,9 @@
   font-family: "Comic Sans MS", cursive, sans-serif;
   }
 
+
+  /* Navbar
+  ========================================= */
   .navbar-title
   {
   font-family: Tahoma, Geneva, sans-serif;
@@ -50,8 +55,27 @@
   background-color: lightgray;
   }
 
-  /* Change color schema after decesion is made */
-  .bodyHome { 
-  padding-top: 65px;
+  .bodyNav { 
+  padding-top: 85px;
   background-color: #bbaaaa; 
   }
+
+  /* Homepage "Change color schema after decesion is made"
+  ========================================= */
+  
+
+  /* Profile 
+  ========================================= */
+  .bodyNav { 
+    padding-top: 85px;
+    background-color: #bbaaaa; 
+    }
+
+  #labelProfile {
+  font-size:20px;
+  font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .ProfileHR {
+    border: 1px solid black;
+    }

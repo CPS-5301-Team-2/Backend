@@ -14,6 +14,10 @@ router.get('/homepage', (req,res)=>{
     res.render("homepage");
 });
 
+router.get('/profile', (req,res)=>{
+    res.render("profile");
+});
+
 //admin example for middleware 
 // router.get('/staff', authController.isLoggedIn, function (req, res) {
 //     if (req.user.Position == "staff") {
