@@ -1,0 +1,189 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REALestate Admin</title>
+    <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/lib/jQuery-3.4.1.js"></script>
+    <script src="/js/lib/bootstrap.min.js"></script>
+</head>
+
+
+
+<nav class="navbar fixed-top navbar-light bg-info">
+    <!-- <div class="navbar-left">
+        <a href="homepage" class="btn btn-secondary" role="button">Homepage</a>
+    </div> -->
+
+    <div class="navbar-left">
+        <a> Active User: Steve Rich</a>
+    </div>
+    
+    <p class="navbar-title">REALestate</p>
+    
+    <div class="navbar-right ">
+        <div class="btn-group ">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+              Dropdown
+            </button>
+            <div class="dropdown-menu dropdown-menu-right p-3 mb-2 bg-light text-white">
+                <a class="dropdown-item" href="homepage">Homepage</a>
+                <a class="dropdown-item" href="profile">Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-danger" href="login">Logout</a>           
+             </div>
+        </div>
+    </div>
+  </nav>
+
+  <body class="bodyNav">
+    <div class="container">
+        <div class="row flex-lg-nowrap">
+          <div class="col">
+            <div class="row">
+              <div class="col mb-3">
+                <div class="card">
+                  <div id="tableDiv" class="contact-body table-responsive-lg">
+                    <table class="table table-striped">
+                        <thead>
+                          <tr class="bg-info">
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Edit</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">H4Y0001</th>
+                            <td>Mike Balboa</td>
+                            <td>Ceo</td>
+                            <td>908-556-4817</td>
+                            <td>Edit</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">H4Y0777</th>
+                            <td>Test Test</td>
+                            <td>Imposter</td>
+                            <td>909-909-7777</td>
+                            <td>
+
+                                <button type="button" id="editButton" class="btn btn-primary btn-xs" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                    Edit
+                                  </button>
+
+                                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                               <!-- users name -->
+                                               <h5 class="modal-title" id="adminModalLabel">Editing: Test Test</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+
+
+                                                <div class="row flex-lg-nowrap">
+                                                    <div class="col-lg-5">
+                                                        <div class="form-group">
+                                                          <label id="labelProfile">Name:</label>
+                                                          <input class="form-control" type="text" name="name" value="Steve Rich">
+                                                        </div>
+                                                      </div>
+                                                  <div class="col-2">
+                                                        <!-- spacer -->
+                                                    </div>
+                                                    <div class="col-lg-5">
+                                                        <div class="form-group">
+                                                          <label id="labelProfile">Username:</label>
+                                                          <input class="form-control" type="text" name="name" value="Imposter">
+                                                        </div>
+                                                      </div>
+                                                </div>
+
+                                                <div class="row flex-lg-nowrap">
+                                                    <div class="col-lg-5">
+                                                        <div class="form-group">
+                                                          <label id="labelProfile">Email:</label>
+                                                          <input class="form-control" type="text" name="name" value="NotTheImposter@itWasRed.org">
+                                                        </div>
+                                                      </div>
+                                                  <div class="col-2">
+                                                        <!-- spacer -->
+                                                    </div>
+                                                    <div class="col-lg-5">
+                                                        <div class="form-group">
+                                                          <label id="labelProfile">Phone:</label>
+                                                          <input class="form-control" type="text" name="name" value="909-909-7777">
+                                                        </div>
+                                                      </div>
+                                                </div>
+
+                                                <div class="row flex-lg-nowrap">
+                                                    <div class="col-lg-5">
+                                                        <div class="form-group">
+                                                          <label id="labelProfile">ID Number:</label>
+                                                          <input class="form-control" type="text" name="name" value="H4Y0777">
+                                                        </div>
+                                                      </div>
+                                                  <div class="col-2">
+                                                        <!-- spacer -->
+                                                    </div>
+                                                    <div class="col-lg-5">
+                                                        <div class="form-group">
+                                                          <label id="labelProfile" for="role">Role:</label>
+                                                            <select class="form-control" id="role" value="TBD">
+                                                                <option>Ceo</option>
+                                                                <option>Admin</option>
+                                                                <option>Relator</option>
+                                                                <option>TBD</option>
+                                                            </select>
+                                                        </div>
+                                                      </div>
+                                                </div>
+
+                                                <div class="row flex-lg-nowrap">
+                                                    <div class="col-lg-5">
+                                                        <div class="form-group">
+                                                          <label id="labelProfile">Password:</label>
+                                                          <input class="form-control" type="text" name="name" value="TheOtherImposterIsBlue">
+                                                        </div>
+                                                      </div>
+                                                  <div class="col-2">
+                                                        <!-- spacer -->
+                                                    </div>
+                                                    <div class="col-lg-5">
+                                                        <label id="labelProfile"></label>
+                                                        <label id="editModalWarning">The password field will only update if you select "Reset Password". No other field will be updated!"</label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Reset Password</button>
+                                            <button type="button" class="btn btn-sm btn-Danger" data-dismiss="modal">Delete User</button>
+                                            <button type="button" class="btn btn-sm btn-success">Save Shanges</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+  </body>
