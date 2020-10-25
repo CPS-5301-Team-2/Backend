@@ -49,6 +49,7 @@
   font-size:40px;
   color: black;
   line-height: 5px;
+  margin-top: 15px;
   }
 
   .dropdown-item:hover {
@@ -66,16 +67,24 @@
 
   /* Profile 
   ========================================= */
-  .bodyNav { 
-    padding-top: 85px;
-    background-color: #bbaaaa; 
-    }
-
   #labelProfile {
-  font-size:20px;
+  font-size:15px;
   font-family: Arial, Helvetica, sans-serif;
   }
 
   .ProfileHR {
+    border: 1px solid black;
+    }
+
+  /* Contact 
+  ========================================= */
+  #tableDiv
+  {
+    margin: 5px;
+ 
+    margin-bottom: -10px;
+  }
+
+  table {
     border: 1px solid black;
     }
