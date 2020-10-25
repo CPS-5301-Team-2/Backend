@@ -11,7 +11,9 @@ router.post("/login",
         failureRedirect: "/",
         failureFlash: true
     }), (req,res)=>{
-
+        
+                res.redirect('/homepage');
+        
     // TODO actions after user gets authenticated
 
         // option1: if rank is user, redirect ("/user") <== this will be for regular user
