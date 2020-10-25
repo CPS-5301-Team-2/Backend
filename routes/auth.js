@@ -2,60 +2,23 @@ var express = require('express');
 var router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../model/users");
-const SALT_PASSES = process.env.SALT_PASSES || 8;
+const SALT_PASSES = parseInt(process.env.SALT_PASSES) || 8;
 const passport = require("passport");
 const app = require('../app');
+const ensureAdminAuthenticated = require("../config/ensureAdminAuthenticated");
 
 router.post("/login", 
     passport.authenticate('local',{
         failureRedirect: "/",
         failureFlash: true
     }), (req,res)=>{
-        
-                res.redirect('/homepage');
-        
-    // TODO actions after user gets authenticated
-
-        // option1: if rank is user, redirect ("/user") <== this will be for regular user
-        //             else redirect to ("/admin") <== this will be admin get (admin only)
+            console.log(req.user);
+            res.redirect('/homepage');
 });
 
-/*example for isLoggedIn for middleware */
-// async(req,res,next)=>{
-//     console.log(req.cookies);
-//     if(req.cookies.jwt){
-//         try {
-//             //1) verify the token
-//             const decoded = await promisify(jwt.verify)(req.cookies.jwt,
-//                 process.env.JWT_SECRET
-//                 );
-                
-//                 //2)check if user is still available
-//             config.imcdb.query('SELECT * FROM node_login where UserID = ?', [decoded.id], (error, result) => {
-//                 console.log(result);
-
-//                 if(!result){
-//                     return next();
-//                 }
-
-//                 req.user = result[0];
-//                 return next();
-//             });
-//                 console.log(decoded);
-                
-//         } catch (error) {
-//             console.log(error);
-//             return next();
-//         }
-//     }else{
-//         next()
-//     }
-// }
-
-router.post("/create", async (req,res)=>
+router.post("/create", ensureAdminAuthenticated, async (req,res)=>
 {
 
-    //create from admin 
     req.check('name', "Name is required").notEmpty();
     req.check('username', "Username is required").notEmpty();
     req.check('password', "password is required").notEmpty();
@@ -118,6 +81,8 @@ router.post("/create", async (req,res)=>
         });
     } catch (err){
         console.log(err.message);
+        res.status(500);
+        res.send("Internal Error");
     }
 });
 

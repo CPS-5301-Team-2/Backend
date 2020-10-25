@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var ensuredAuthenticated = require("../config/ensureAuthenticated");
+const ensureAdminAuthenticated = require("../config/ensureAdminAuthenticated");
 
 router.get('/', (req, res) =>{
     res.render("index");
@@ -10,7 +12,7 @@ router.get('/login', (req,res)=>{
 });
 
 // check my work bahad
-router.get('/homepage', (req,res)=>{
+router.get('/homepage', ensuredAuthenticated, (req,res)=>{
     res.render("homepage");
 });
 
@@ -22,7 +24,7 @@ router.get('/contact', (req,res)=>{
     res.render("contact");
 });
 
-router.get('/admin', (req,res)=>{
+router.get('/admin', ensureAdminAuthenticated, (req,res)=>{
     res.render("admin");
 });
 
