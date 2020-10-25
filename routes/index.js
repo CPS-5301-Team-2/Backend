@@ -18,6 +18,10 @@ router.get('/profile', (req,res)=>{
     res.render("profile");
 });
 
+router.get('/contact', (req,res)=>{
+    res.render("contact");
+});
+
 //admin example for middleware 
 // router.get('/staff', authController.isLoggedIn, function (req, res) {
 //     if (req.user.Position == "staff") {
