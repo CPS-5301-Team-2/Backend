@@ -9,8 +9,7 @@ const ensureAdminAuthenticated = require("../config/ensureAdminAuthenticated");
 
 router.post("/login", 
     passport.authenticate('local',{
-        failureRedirect: "/",
-        failureFlash: true
+        failureRedirect: "/login"
     }), (req,res)=>{
             console.log(req.user);
             res.redirect('/homepage');
