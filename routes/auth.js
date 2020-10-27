@@ -11,7 +11,8 @@ const {promisify} = require('util');
 
 router.post("/login", 
     passport.authenticate('local',{
-        failureRedirect: "/login"
+        failureRedirect: "/login",
+        failureFlash: true
     }), (req,res)=>{
         res.redirect('/homepage');
 });
