@@ -9,12 +9,10 @@ const ensureAdminAuthenticated = require("../config/ensureAdminAuthenticated");
 const jwt = require('jsonwebtoken');
 const {promisify} = require('util');
 
-
 router.post("/login", 
     passport.authenticate('local',{
         failureRedirect: "/login"
     }), (req,res)=>{
-        
         res.redirect('/homepage');
 });
 
@@ -35,6 +33,7 @@ router.post("/create", ensureAdminAuthenticated, async (req,res)=>
         .withMessage("Password must contain at least 1 uppercase alphabetical character")
     req.check('email', "Email is required").notEmpty();
     req.check('phone', "Phone number is required").notEmpty();
+    req.check('rank', "Rank is required").notEmpty();
 
     //check for input validation causes
     const errors = req.validationErrors();
@@ -46,7 +45,7 @@ router.post("/create", ensureAdminAuthenticated, async (req,res)=>
         return res.json({error: firstError});
     }
 
-    const{name, username, password, email, phone} = req.body;
+    const{name, username, password, email, phone, rank} = req.body;
 
     try
     {
@@ -55,13 +54,12 @@ router.post("/create", ensureAdminAuthenticated, async (req,res)=>
         if(user)
         {
             return res.status(400).json({
-                error: "User already exists"
+                error: "Username already exists"
             });
         }
 
         //hash password
         const passwordHash = await bcrypt.hash(password, SALT_PASSES);
-        console.log(passwordHash);
 
         user = new User({
             name,
@@ -69,12 +67,15 @@ router.post("/create", ensureAdminAuthenticated, async (req,res)=>
             password: passwordHash,
             email,
             phone, 
-            rank: "User"
+            rank
         });
 
-        await user.save(function(err){
+        user.save(function(err){
             if(err){
                 console.log(err);
+                res.json({
+                    error: err
+                });
             }else{
                 res.json({
                     message: "success"

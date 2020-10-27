@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/lib/jQuery-3.4.1.js"></script>
     <script src="/js/lib/bootstrap.min.js"></script>
+    <script defer src="/js/addUser.js"></script>
 </head>
 
 
@@ -61,13 +62,11 @@
                   </div>
                   <div class="modal-body">
                       <div class="container">
-
-
                           <div class="row flex-lg-nowrap">
                               <div class="col-lg-5">
                                   <div class="form-group">
                                     <label id="labelProfile">Name:</label>
-                                    <input class="form-control" type="text" name="name" value="">
+                                    <input class="form-control" type="text" name="name" id="add-name">
                                   </div>
                                 </div>
                             <div class="col-2">
@@ -76,7 +75,7 @@
                               <div class="col-lg-5">
                                   <div class="form-group">
                                     <label id="labelProfile">Username:</label>
-                                    <input class="form-control" type="text" name="name" value="">
+                                    <input class="form-control" type="text" name="username" id="add-username">
                                   </div>
                                 </div>
                           </div>
@@ -85,7 +84,7 @@
                               <div class="col-lg-5">
                                   <div class="form-group">
                                     <label id="labelProfile">Email:</label>
-                                    <input class="form-control" type="text" name="name" value="">
+                                    <input class="form-control" type="text" name="email" id="add-email">
                                   </div>
                                 </div>
                             <div class="col-2">
@@ -94,7 +93,7 @@
                               <div class="col-lg-5">
                                   <div class="form-group">
                                     <label id="labelProfile">Phone:</label>
-                                    <input class="form-control" type="text" name="name" value="">
+                                    <input class="form-control" type="text" name="phone" id="add-phone">
                                   </div>
                                 </div>
                           </div>
@@ -103,21 +102,19 @@
                               <div class="col-lg-5">
                                 <div class="form-group">
                                   <label id="labelProfile">Password:</label>
-                                  <input class="form-control" type="text" name="name" value="">
+                                  <input class="form-control" type="password" name="password" id="add-password">
                                 </div>
-                                </div>
+                              </div>
                             <div class="col-2">
                                   <!-- spacer -->
                               </div>
                               <div class="col-lg-5">
                                   <div class="form-group">
                                     <label id="labelProfile" for="role">Role:</label>
-                                    <select class="form-control" id="role" value="TBD">
+                                    <select class="form-control" id="add-role" name="role" id="add-role">
                                       <option value="" disabled selected>Choose a Role</option>
-                                      <option>Ceo</option>
-                                      <option>Admin</option>
-                                      <option>Relator</option>
-                                      <option>TBD</option>
+                                      <option value="User">User</option>
+                                      <option value="Admin">Admin</option>
                                     </select>
                                   </div>
                                 </div>
@@ -126,7 +123,7 @@
                       </div>
                   </div>
                   <div class="modal-footer">
-                      <button type="button" id ="addUser" class="btn btn-sm btn-success">Add User</button>
+                      <button type="button" id ="addUser" onclick="addUser()" class="btn btn-sm btn-success">Add User</button>
                   </div>
                 </div>
               </div>

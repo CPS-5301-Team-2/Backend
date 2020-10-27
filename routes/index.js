@@ -13,9 +13,9 @@ router.get('/login', (req,res)=>{
 
 // check my work bahad
 router.get('/homepage', ensuredAuthenticated, (req,res)=>{
-    console.log(req.rank);
     res.render("homepage", {
-        rank: req.rank
+        rank: req.rank,
+        name: req.user.name
     });
 });
 
