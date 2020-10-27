@@ -13,7 +13,9 @@ router.get('/login', (req,res)=>{
 
 // check my work bahad
 router.get('/homepage', ensuredAuthenticated, (req,res)=>{
-    res.render("homepage");
+    res.render("homepage", {
+        user: req.rank
+    });
 });
 
 router.get('/profile', (req,res)=>{
