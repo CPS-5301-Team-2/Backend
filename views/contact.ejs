@@ -8,9 +8,6 @@
     <script src="/js/lib/bootstrap.min.js"></script>
 </head>
 
-
-
-
 <nav class="navbar fixed-top navbar-light bg-info">
     <!-- <div class="navbar-left">
         <a href="homepage" class="btn btn-secondary" role="button">Homepage</a>
@@ -55,30 +52,14 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">Mike Balboa</th>
-                            <td>Ceo</td>
-                            <td>908-556-4817</td>
-                            <td>MikeBalboa@house4you.org</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Steve Rich</th>
-                            <td>Admin</td>
-                            <td>908-666-1598</td>
-                            <td>SteveRich@house4you.org</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Marry Jane</th>
-                            <td>Relator</td>
-                            <td>908-985-5902</td>
-                            <td>MaryJane@house4you.org</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Test Test</th>
-                            <td>Imposter</td>
-                            <td>909-909-7777</td>
-                            <td>NotTheImposter@itWasRed.org</td>
-                          </tr>
+                          <% for( let i in user) { %>
+                            <tr>
+                              <th scope="row"><%= user[i].name%></th>
+                              <td><%= user[i].rank%></td>
+                              <td><%= user[i].phone%></td>
+                              <td><%= user[i].email%></td>
+                            </tr>
+                          <% } %>
                         </tbody>
                       </table>
                   </div>

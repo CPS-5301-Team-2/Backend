@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var ensuredAuthenticated = require("../config/ensureAuthenticated");
 const ensureAdminAuthenticated = require("../config/ensureAdminAuthenticated");
+var users = require("../model/users");
 
 router.get('/', (req, res) =>{
     res.render("index");
@@ -23,8 +24,10 @@ router.get('/profile', (req,res)=>{
     res.render("profile");
 });
 
-router.get('/contact', (req,res)=>{
-    res.render("contact");
+router.get('/contact', ensuredAuthenticated, async (req,res)=>{
+
+    var user = await users.find({}).select({"name": 1, "rank": 1, "phone": 1, "email": 1, "_id": 0}).lean();
+    res.render("contact", {user: user});
 });
 
 router.get('/admin', ensureAdminAuthenticated, (req,res)=>{
