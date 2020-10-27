@@ -5,11 +5,12 @@ const ensureAdminAuthenticated = require("../config/ensureAdminAuthenticated");
 var users = require("../model/users");
 
 router.get('/', (req, res) =>{
-    res.render("index");
+    res.redirect("homepage");
 });
 
 router.get('/login', (req,res)=>{
-    res.render("login");
+    var flash = req.flash('error')[0];
+    res.render("login", {message: flash});
 });
 
 // check my work bahad

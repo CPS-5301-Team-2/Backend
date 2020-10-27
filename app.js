@@ -36,9 +36,11 @@ app.use(session({
 }));
 
 // Passport Configs
+var flash = require('connect-flash');
 require("./config/passport")(passport);
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 //index router
 app.use("/", indexRouter);
