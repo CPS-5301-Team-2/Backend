@@ -31,6 +31,10 @@ router.get('/admin', ensureAdminAuthenticated, (req,res)=>{
     res.render("admin");
 });
 
+router.get('/nav', (req,res)=>{
+    res.render('navbar');
+});
+
 //admin example for middleware 
 // router.get('/staff', authController.isLoggedIn, function (req, res) {
 //     if (req.user.Position == "staff") {
