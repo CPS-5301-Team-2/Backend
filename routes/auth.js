@@ -7,28 +7,15 @@ const passport = require("passport");
 const app = require('../app');
 const ensureAdminAuthenticated = require("../config/ensureAdminAuthenticated");
 const jwt = require('jsonwebtoken');
+const {promisify} = require('util');
+
 
 router.post("/login", 
     passport.authenticate('local',{
         failureRedirect: "/login"
-    }),async (req,res)=>{
-        try{
-            const id = req.body.username;
-            let user = await User.findOne({"username": id});
-            //setup token with exp
-            const token = jwt.sign({id: id, rank: user.rank}, process.env.JWT_SECRET, {
-                expiresIn:process.env.JWT_EXPIRES_IN,
-            });
-
-            const cookieOptions = {
-                expires: new Date(
-                    Date.now()+process.env.JWT_COOKIES_EXPIRES * 24 * 60 * 60 * 1000
-                ), 
-                httpOnly: true,
-            };
-        }catch(err){
-            console.log(err);
-        }
+    }), (req,res)=>{
+        
+        res.redirect('/homepage');
 });
 
 router.post("/create", ensureAdminAuthenticated, async (req,res)=>
@@ -106,8 +93,5 @@ router.get('/logout', (req, res)=>{
     req.logout();
     res.redirect("/");
 });
-
-
-
 
 module.exports = router;
