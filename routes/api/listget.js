@@ -14,12 +14,12 @@ router.get('/user', (req, res) =>{
     })
 });
 router.get('/admin', (req, res) =>{
-    user.find((error, admin) =>{
+    user.find({rank: "Admin"}, (error, users) =>{
         if(error){
             console.log(error);
         }
-        res.send(admin);
-    })
+        res.send(users);
+    });
 });
 
 module.exports = router;
