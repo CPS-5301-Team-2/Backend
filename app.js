@@ -16,6 +16,7 @@ InitiateMongoServer();
 var indexRouter = require("./routes/index");
 var adminList = require("./routes/api/listget");
 var auth = require("./routes/auth.js");
+var update = require("./routes/update");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,6 +47,7 @@ app.use(flash());
 app.use("/", indexRouter);
 app.use("/list", adminList);
 app.use("/auth", auth);
+app.use("/update", update);
 
 
 // catch 404 and forward to error handler

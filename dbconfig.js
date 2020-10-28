@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-require('dotenv').config({path: ''});
+require('dotenv').config({path: './.env'});
 
 var mongoDB = process.env.MONGO_URI;
 const InitiateMongoServer = async () => {

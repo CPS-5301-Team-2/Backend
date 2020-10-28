@@ -6,8 +6,6 @@ const SALT_PASSES = parseInt(process.env.SALT_PASSES) || 8;
 const passport = require("passport");
 const app = require('../app');
 const ensureAdminAuthenticated = require("../config/ensureAdminAuthenticated");
-const jwt = require('jsonwebtoken');
-const {promisify} = require('util');
 
 router.post("/login", 
     passport.authenticate('local',{
