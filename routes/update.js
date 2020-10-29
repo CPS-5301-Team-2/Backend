@@ -22,4 +22,18 @@ router.post('/userupdate/:id', (req, res)=>{
     })
 });
 
+router.post('/passwordupdate/:id', async (req, res)=>{
+    const {password} = req.body;
+    //hash password
+    const passwordHash = await bcrypt.hash(password, SALT_PASSES);
+
+    User.update({username: req.params.id}, {$set:{
+        password: passwordHash
+        }}, function(err){
+            if(err){
+                console.log(err);
+            }else{return res.json({ message: "success to update"});}
+        })
+})
+
 module.exports = router;
