@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../model/users");
 const SALT_PASSES = parseInt(process.env.SALT_PASSES) || 8;
 
-// admin update userinfo 
+//userinfo update
 // does session has unique id? 
 router.post('/userupdate/:id', (req, res)=>{
     const {name, username, phone, email, role} = req.body;
@@ -22,6 +22,7 @@ router.post('/userupdate/:id', (req, res)=>{
     })
 });
 
+//password update
 router.post('/passwordupdate/:id', async (req, res)=>{
     const {password} = req.body;
     //hash password

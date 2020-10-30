@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../model/users");
 const SALT_PASSES = parseInt(process.env.SALT_PASSES) || 8;
 const passport = require("passport");
+const db = require("../dbconfig")
 const app = require('../app');
 const ensureAdminAuthenticated = require("../config/ensureAdminAuthenticated");
 
@@ -75,17 +76,35 @@ router.post("/create", ensureAdminAuthenticated, async (req,res)=>
                 res.json({
                     error: err
                 });
-            }else{
-                res.json({
-                    message: "success"
-                });
             }
         });
+
+        //sendout email 
+        var mailOptions = {
+            from: "SEA <kimeunb1822@gmail.com>",
+            to: `${email}`,
+            subject: "Welcome to SEA!",
+            html: `Here is your login information <br> Username: ${username} <br> Password: ${password}`,
+        }
+
+        db.transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+              console.log(error);
+            }
+            return res.json({
+              message: "success! email sent to the user",
+            });
+          });
+
+        
+
     } catch (err){
         console.log(err.message);
         res.status(500);
         res.send("Internal Error");
     }
+
+
 });
 
 // Logs user out.

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 require('dotenv').config({path: './.env'});
+const nodemailer = require("nodemailer");
 
 var mongoDB = process.env.MONGO_URI;
 const InitiateMongoServer = async () => {
@@ -12,4 +13,17 @@ const InitiateMongoServer = async () => {
     }
 };
 
-module.exports = InitiateMongoServer;
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+     user: process.env.MAIL_USER, 
+     pass: process.env.MAIL_PASSWORD
+    }
+ });
+
+module.exports = {
+    InitiateMongoServer : InitiateMongoServer,
+    transporter : transporter
+};

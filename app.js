@@ -10,7 +10,7 @@ var session = require('express-session');
 
 const port = process.env.PORT || 3001;
 
-InitiateMongoServer();
+InitiateMongoServer.InitiateMongoServer();
 
 //router path
 var indexRouter = require("./routes/index");
