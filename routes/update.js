@@ -89,4 +89,14 @@ router.get("/admin/password", ensureAdminAuthenticated, (req, res)=>{
 
 });
 
+router.post('/delete/:id', ensureAdminAuthenticated, (req, res)=>{
+    User.removeById(req.params.id, function(err, output){
+        if(err){
+            return res.json({message: "Unexpected Error, Try again", success: false});
+        }else{
+            return res.json({message: "Delete successfully", success: true});
+        }
+    })
+});
+
 module.exports = router;

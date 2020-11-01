@@ -103,8 +103,6 @@ router.post("/create", ensureAdminAuthenticated, async (req,res)=>
         res.status(500);
         res.send("Internal Error");
     }
-
-
 });
 
 // Logs user out.
