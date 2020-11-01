@@ -1,10 +1,10 @@
 
 <nav class="navbar fixed-top navbar-light bg-info">
     <div class="navbar-left">
-        <a> Active User: <%= name%></a>
+        <a> Active User: <%= user.name%></a>
     </div>
     
-    <p class="navbar-title">REALestate</p>
+    <p class="navbar-title" onclick="window.location.replace('/homepage')" style="cursor: pointer;">REALestate</p>
     
     <div class="navbar-right ">
         <div class="btn-group ">
@@ -12,10 +12,13 @@
               Dropdown
             </button>
             <div class="dropdown-menu dropdown-menu-right p-3 mb-2 bg-light text-white">
-                <a class="dropdown-item" href="homepage">Homepage</a>
-                <a class="dropdown-item" href="profile">Profile</a>
-                <a class="dropdown-item" href="contact">Contact</a>
-
+                <a class="dropdown-item" href="/homepage">Homepage</a>
+                <a class="dropdown-item" href="/profile">Profile</a>
+                <a class="dropdown-item" href="/contact">Contact</a>
+                <% if (user.rank == 'Admin') { %>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/admin">Admin</a>
+                <% } %>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item text-danger" href="login">Logout</a>           
              </div>

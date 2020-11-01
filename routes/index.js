@@ -3,9 +3,14 @@ var router = express.Router();
 var ensuredAuthenticated = require("../config/ensureAuthenticated");
 const ensureAdminAuthenticated = require("../config/ensureAdminAuthenticated");
 var users = require("../model/users");
+const ensureAuthenticated = require('../config/ensureAuthenticated');
 
 router.get('/', (req, res) =>{
     res.redirect("homepage");
+});
+
+router.get("/nav", (req,res)=>{
+    res.render("navbar", {user: req.user});
 });
 
 router.get('/login', (req,res)=>{
@@ -21,8 +26,8 @@ router.get('/homepage', ensuredAuthenticated, (req,res)=>{
     });
 });
 
-router.get('/profile', (req,res)=>{
-    res.render("profile");
+router.get('/profile', ensureAuthenticated, (req,res)=>{
+    res.render("profile", {user: req.user});
 });
 
 router.get('/contact', ensuredAuthenticated, async (req,res)=>{
@@ -33,10 +38,6 @@ router.get('/contact', ensuredAuthenticated, async (req,res)=>{
 
 router.get('/admin', ensureAdminAuthenticated, (req,res)=>{
     res.render("admin");
-});
-
-router.get('/nav', (req,res)=>{
-    res.render('navbar');
 });
 
 
