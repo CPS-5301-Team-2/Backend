@@ -39,26 +39,5 @@ router.get('/nav', (req,res)=>{
     res.render('navbar');
 });
 
-//admin example for middleware 
-// router.get('/staff', authController.isLoggedIn, function (req, res) {
-//     if (req.user.Position == "staff") {
-//         res.render('../views/staff');
-//     }
-//     else {
-//         res.redirect('/login');
-//     }
-// });
-
-// router.get('/profile', authController.isLoggedIn, function (req, res) {
-//     if(req.user.Position == "student"){
-//         res.render('../views/profile', {
-//             user: req.user
-//         });
-       
-//     }
-//     else{
-//         res.redirect('/login');
-//     }
-// });
 
 module.exports = router;
