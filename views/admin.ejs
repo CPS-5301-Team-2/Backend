@@ -8,6 +8,7 @@
     <script src="/js/lib/bootstrap.min.js"></script>
     <script defer src="/js/addUser.js"></script>
     <script src="/js/phoneFormat.js" defer></script>
+    <script src="/js/updateUser.js"></script>
 </head>
 
 <div id="nav-placeholder"></div>
@@ -21,14 +22,12 @@
     <div class="container">
         <div class="row flex-lg-nowrap">
           <div class="col">
-
             <button type="button" id="AddButton" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".add-modal-lg">
               Add User
             </button>
             <p>
               <!-- spacer -->
             </p>
-
             <div class="modal fade add-modal-lg" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -58,7 +57,6 @@
                                   </div>
                                 </div>
                           </div>
-
                           <div class="row flex-lg-nowrap">
                               <div class="col-lg-5">
                                   <div class="form-group">
@@ -76,7 +74,6 @@
                                   </div>
                                 </div>
                           </div>
-
                           <div class="row flex-lg-nowrap">
                               <div class="col-lg-5">
                                 <div class="form-group">
@@ -107,8 +104,6 @@
                 </div>
               </div>
             </div>
-
-
             <div class="row">
               <div class="col mb-3">
                 <div class="card">
@@ -124,23 +119,26 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">H4Y0001</th>
-                            <td>Mike Balboa</td>
-                            <td>Ceo</td>
-                            <td>908-556-4817</td>
-                            <td>Edit</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">H4Y0777</th>
-                            <td>Test Test</td>
-                            <td>Imposter</td>
-                            <td>909-909-7777</td>
-                            <td>
-                                <button type="button" id="editButton" class="btn btn-primary btn-xs" data-toggle="modal" data-target=".edit-modal-lg">
-                                    Edit
-                                </button>
-                            </td>
+                          <% for(var i in users){ %>
+                            <%
+                              var id = escape(users[i]._id);
+                              var name = escape(users[i].name);
+                              var email = escape(users[i].email);
+                              var username = escape(users[i].username);
+                              var phone = escape(users[i].phone);
+                              var role = escape(users[i].rank);
+                            %>
+                            <tr>
+                              <th scope="row"><%= users[i]._id%></th>
+                              <td><%= users[i].name%></td>
+                              <td><%= users[i].rank%></td>
+                              <td><%= users[i].phone%></td>
+                              <td>
+                                  <button type="button" id="editButton" class="btn btn-primary btn-xs" data-toggle="modal" data-target=".edit-modal-lg" onclick="showModel('<%= name%>', '<%= username%>', '<%= email%>', '<%= phone%>', '<%= id%>', '<%= role%>')">
+                                      Edit
+                                  </button>
+                              </td>
+                          <%}%>
                           </tr>
                         </tbody>
                       </table>
@@ -148,7 +146,6 @@
                 </div>
               </div>
             </div>
-
             <div class="modal fade edit-modal-lg" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -161,13 +158,11 @@
                   </div>
                   <div class="modal-body">
                       <div class="container">
-
-
                           <div class="row flex-lg-nowrap">
                               <div class="col-lg-5">
                                   <div class="form-group">
                                     <label id="labelProfile">Name:</label>
-                                    <input class="form-control" type="text" name="name" value="Steve Rich">
+                                    <input class="form-control" type="text" name="name" id="modelName" value="">
                                   </div>
                                 </div>
                             <div class="col-2">
@@ -176,16 +171,15 @@
                               <div class="col-lg-5">
                                   <div class="form-group">
                                     <label id="labelProfile">Username:</label>
-                                    <input class="form-control" type="text" name="username" value="Imposter">
+                                    <input class="form-control" type="text" name="username" id="modelUsername" value="">
                                   </div>
                                 </div>
                           </div>
-
                           <div class="row flex-lg-nowrap">
                               <div class="col-lg-5">
                                   <div class="form-group">
                                     <label id="labelProfile">Email:</label>
-                                    <input class="form-control" type="text" name="email" value="NotTheImposter@itWasRed.org">
+                                    <input class="form-control" type="text" name="email" id="modelEmail" value="">
                                   </div>
                                 </div>
                             <div class="col-2">
@@ -194,16 +188,15 @@
                               <div class="col-lg-5">
                                   <div class="form-group">
                                     <label id="labelProfile">Phone:</label>
-                                    <input class="form-control" type="text" name="phone" value="909-909-7777">
+                                    <input class="form-control" type="text" name="phone" id="modelPhone" value="">
                                   </div>
                                 </div>
                           </div>
-
                           <div class="row flex-lg-nowrap">
                               <div class="col-lg-5">
                                   <div class="form-group">
                                     <label id="labelProfile">ID Number:</label>
-                                    <input class="form-control" type="text" name="IDNumber" value="H4Y0777" readonly>
+                                    <input class="form-control" type="text" name="IDNumber" id="modelID" value="" readonly>
                                   </div>
                                 </div>
                             <div class="col-2">
@@ -212,21 +205,18 @@
                               <div class="col-lg-5">
                                   <div class="form-group">
                                     <label id="labelProfile" for="role">Role:</label>
-                                      <select class="form-control" name = "role" id="role" value="TBD">
-                                          <option>Ceo</option>
-                                          <option>Admin</option>
-                                          <option>Relator</option>
-                                          <option>TBD</option>
+                                      <select class="form-control" name = "role" id="role" id="modelRole" value="">
+                                          <option value="User">User</option>
+                                          <option value="Admin">Admin</option>
                                       </select>
                                   </div>
                                 </div>
                           </div>
-
                           <div class="row flex-lg-nowrap">
                               <div class="col-lg-5">
                                   <div class="form-group">
                                     <label id="labelProfile">Password:</label>
-                                    <input class="form-control" type="text" name="password" value="TheOtherImposterIsBlue">
+                                    <input class="form-control" type="password" name="password" id="modelPassword" value="">
                                   </div>
                                 </div>
                             <div class="col-2">
@@ -234,16 +224,15 @@
                               </div>
                               <div class="col-lg-5">
                                   <label id="labelProfile"></label>
-                                  <label id="editModalWarning">The password field will only update if you select "Reset Password". No other field will be updated by doing so!"</label>
+                                  <label id="editModalWarning">The password field will only update if you select "Reset Password".</label>
                               </div>
                           </div>
-
                       </div>
                   </div>
                   <div class="modal-footer">
-                      <button type="button" id ="reset" class="btn btn-sm btn-warning" data-dismiss="modal">Reset Password</button>
-                      <button type="button" id ="Delete" class="btn btn-sm btn-Danger" data-dismiss="modal">Delete User</button>
-                      <button type="button" id ="Save" class="btn btn-sm btn-success">Save Changes</button>
+                      <button type="button" id ="reset" class="btn btn-sm btn-warning" onclick="resetPassword()">Reset Password</button>
+                      <button type="button" id ="Delete" class="btn btn-sm btn-Danger" onclick="deleteUser()">Delete User</button>
+                      <button type="button" id ="Save" class="btn btn-sm btn-success" onclick="saveChanges()">Save Changes</button>
                   </div>
                 </div>
               </div>

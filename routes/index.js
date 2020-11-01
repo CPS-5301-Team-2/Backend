@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var ensuredAuthenticated = require("../config/ensureAuthenticated");
 const ensureAdminAuthenticated = require("../config/ensureAdminAuthenticated");
-var users = require("../model/users");
+const users = require("../model/users");
 const ensureAuthenticated = require('../config/ensureAuthenticated');
 
 router.get('/', (req, res) =>{
@@ -36,8 +36,9 @@ router.get('/contact', ensuredAuthenticated, async (req,res)=>{
     res.render("contact", {user: user});
 });
 
-router.get('/admin', ensureAdminAuthenticated, (req,res)=>{
-    res.render("admin");
+router.get('/admin', ensureAdminAuthenticated, async (req,res)=>{
+    var allUsers = await users.find({}).lean();
+    res.render("admin", {users: allUsers});
 });
 
 

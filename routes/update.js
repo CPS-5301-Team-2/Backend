@@ -83,4 +83,10 @@ router.post('/password/:id', ensuredAuthenticated, async (req, res)=>{
     });
 });
 
+router.get("/admin/password", ensureAdminAuthenticated, (req, res)=>{
+
+    
+
+});
+
 module.exports = router;

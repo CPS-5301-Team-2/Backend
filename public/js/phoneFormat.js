@@ -11,7 +11,7 @@ var phoneField = document.getElementById('add-phone');
         } else if (area.length == 3 && pre.length < 3) {
             output = "(" + area + ")" + " " + pre;
         } else if (area.length == 3 && pre.length == 3) {
-            output = "(" + area + ")" + " " + pre + " - "+tel;
+            output = "(" + area + ")" + " " + pre + "-" + tel;
         }
       phoneField.value = output;
       
