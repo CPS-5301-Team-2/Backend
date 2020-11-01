@@ -85,7 +85,7 @@ router.post("/create", ensureAdminAuthenticated, async (req,res)=>
             to: `${email}`,
             subject: "Welcome to SEA!",
             html: `Here is your login information <br> Username: ${username} <br> Password: ${password}`,
-        }
+        };
 
         db.transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
