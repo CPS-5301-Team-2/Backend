@@ -14,6 +14,7 @@
       $("#nav-placeholder").load("/nav");
     });
 </script>
+
   <body class="bodyNav">
 
     <div class="container">
@@ -27,7 +28,7 @@
                   <div class="row">
                     <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                       <div class="text-center text-sm-left mb-2 mb-sm-0">
-                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Welcome: Steve Rich</h4>                        
+                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Welcome: <%=user.name%></h4>                        
                       </div>
                       <% if(user.rank == "Admin"){%>
                         <div class="text-center text-sm-right">
@@ -36,20 +37,19 @@
                       <%}%>
                     </div>
                   </div>
-                      <form class="form" novalidate="">
                         <div class="row">
                           <div class="col">
                             <div class="row">
                               <div class="col">
                                 <div class="form-group">
                                   <label id="labelProfile">Name</label>
-                                  <input class="form-control" type="text" name="name" value="<%=user.name%>">
+                                  <input class="form-control" type="text" name="name" value="<%=user.name%>" readonly>
                                 </div>
                               </div>
                               <div class="col">
                                 <div class="form-group">
                                   <label id="labelProfile">Username</label>
-                                  <input class="form-control" type="text" name="username" value="<%=user.username%>">
+                                  <input class="form-control" type="text" name="username" value="<%=user.username%>" readonly>
                                 </div>
                               </div>
                             </div>
@@ -57,44 +57,72 @@
                               <div class="col">
                                 <div class="form-group">
                                   <label id="labelProfile">Email</label>
-                                  <input class="form-control" type="text" value="<%=user.email%>">
+                                  <input class="form-control" type="text" value="<%=user.email%>" readonly>
+                                </div>
+                              </div>
+
+                              <div class="col">
+                                <div class="form-group">
+                                  <label id="labelProfile">Phone</label>
+                                  <input class="form-control" type="text" value="<%=user.phone%>" readonly>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col-12 col-sm-6 mb-3">
-                            <div class="mb-2"><b>Update Password</b></div>
+                        <form class="form" novalidate="">
+
+                        <div classe="row">
+                          <div class="col-12 ">
+                            <hr class="ProfileHRClear">
+                            <div class="mb-2" align="center"><b>Update Password</b></div>
                             <hr class="ProfileHR">
                             <div class="row">
+                              <div class="col-3">
+                                <!-- spacer -->
+                            </div>
                               <div class="col">
                                 <div class="form-group">
                                   <label id="labelProfile">Current Password</label>
                                   <input class="form-control" type="password" placeholder="••••••">
                                 </div>
                               </div>
+                              <div class="col-3">
+                                <!-- spacer -->
+                            </div>
                             </div>
                             <div class="row">
+                              <div class="col-3">
+                                <!-- spacer -->
+                            </div>
                               <div class="col">
                                 <div class="form-group">
                                   <label id="labelProfile">New Password</label>
                                   <input class="form-control" type="password" placeholder="••••••">
                                 </div>
                               </div>
+                              <div class="col-3">
+                                <!-- spacer -->
+                            </div>
                             </div>
                             <div class="row">
+                              <div class="col-3">
+                                <!-- spacer -->
+                            </div>
                               <div class="col">
                                 <div class="form-group">
                                   <label id="labelProfile">Confirm <span class="d-none d-xl-inline">Password</span></label>
                                   <input class="form-control" type="password" placeholder="••••••"></div>
                               </div>
+                              <div class="col-3">
+                                <!-- spacer -->
                             </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col d-flex justify-content-end">
-                            <button class="btn btn-primary" type="submit">Update Changes</button>
+                            </div>
+                            <div class="row">
+                              <div class="col d-flex justify-content-center">
+                                <button class="btn btn-primary" type="submit">Update password</button>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </form>
