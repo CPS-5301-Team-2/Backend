@@ -8,34 +8,12 @@
     <script src="/js/lib/bootstrap.min.js"></script>
 </head>
 
-<nav class="navbar fixed-top navbar-light bg-info">
-  <!-- <div class="navbar-left">
-        <a href="homepage" class="btn btn-secondary" role="button">Homepage</a>
-    </div> -->  
-  
-  <div class="navbar-left">
-        <a> Active User: <%= name%></a>
-    </div>
-    
-    <p class="navbar-title">REALestate</p>
-    
-    <div class="navbar-right ">
-        <div class="btn-group ">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-              Settings
-            </button>
-            <div class="dropdown-menu dropdown-menu-right p-3 mb-2 bg-light text-white">
-                <a class="dropdown-item" href="profile">Profile</a>
-                <a class="dropdown-item" href="contact">Contact</a>
-              <% if(rank === 'Admin'){ %>
-                <a class="dropdown-item" href="admin">Admin</a>
-              <% } %>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="login">Logout</a>           
-             </div>
-        </div>
-    </div>
-  </nav>
+<div id="nav-placeholder"></div>
+<script>
+    $(function(){
+      $("#nav-placeholder").load("nav");
+    });
+</script>
 
   <body class="bodyNav">
 

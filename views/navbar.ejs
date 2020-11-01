@@ -1,18 +1,7 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <title>REALestate Nav</title> -->
-    <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/js/lib/jQuery-3.4.1.js"></script>
-    <script src="/js/lib/bootstrap.min.js"></script>
-</head>
-
-
 
 <nav class="navbar fixed-top navbar-light bg-info">
     <div class="navbar-left">
-        <a> Active User: Steve Rich</a>
+        <a> Active User: <%= name%></a>
     </div>
     
     <p class="navbar-title">REALestate</p>
@@ -26,9 +15,11 @@
                 <a class="dropdown-item" href="homepage">Homepage</a>
                 <a class="dropdown-item" href="profile">Profile</a>
                 <a class="dropdown-item" href="contact">Contact</a>
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item text-danger" href="login">Logout</a>           
              </div>
         </div>
     </div>
   </nav>
+
