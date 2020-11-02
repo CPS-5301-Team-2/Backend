@@ -60,7 +60,7 @@ function saveChanges(){
            phone,
            role
        },
-       success: (response)=>{
+       success: (res)=>{
            if(res.success){
                     window.alert(`${res.message}`);
                     window.location.replace("/admin");
@@ -91,7 +91,7 @@ function deleteUser(){
                 name,
                 id
             },
-            success: (response)=>{
+            success: (res)=>{
                 if(res.success){
                          window.alert(`${res.message}`);
                          window.location.replace("/admin");
