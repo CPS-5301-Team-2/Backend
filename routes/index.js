@@ -10,7 +10,8 @@ router.get('/', (req, res) =>{
 });
 
 router.get("/nav", (req,res)=>{
-    res.render("navbar", {user: req.user});
+    page = req.headers.referer.split("/")[3];
+    res.render("navbar", {user: req.user, page});
 });
 
 router.get('/login', (req,res)=>{
@@ -27,18 +28,24 @@ router.get('/homepage', ensuredAuthenticated, (req,res)=>{
 });
 
 router.get('/profile', ensureAuthenticated, (req,res)=>{
-    res.render("profile", {user: req.user});
+    res.render("profile", {
+        user: req.user
+    });
 });
 
 router.get('/contact', ensuredAuthenticated, async (req,res)=>{
 
     var user = await users.find({}).select({"name": 1, "rank": 1, "phone": 1, "email": 1, "_id": 0}).lean();
-    res.render("contact", {user: user});
+    res.render("contact", {
+        user: user
+    });
 });
 
 router.get('/admin', ensureAdminAuthenticated, async (req,res)=>{
     var allUsers = await users.find({}).lean();
-    res.render("admin", {users: allUsers});
+    res.render("admin", {
+        users: allUsers
+    });
 });
 
 

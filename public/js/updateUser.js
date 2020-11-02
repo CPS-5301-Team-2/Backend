@@ -7,7 +7,7 @@ function showModel(name, username, email, phone, id, role){
     phone = ifNull(phone);
     id = ifNull(id);
     role = ifNull(role);
-    console.log(name, username, email, phone, id, role);
+    
     // Grabs model elements from front end
     var nameElement = document.getElementById("modelName");
     var usernameElement = document.getElementById("modelUsername");
@@ -18,6 +18,7 @@ function showModel(name, username, email, phone, id, role){
     var passwordElement = document.getElementById("modelPassword");
 
     // Sets input box values to users information
+    document.getElementById('labelName').innerHTML = name;
     nameElement.value = name;
     usernameElement.value = username;
     emailElement.value = email;

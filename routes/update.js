@@ -102,7 +102,7 @@ router.post('/delete/:id', ensureAdminAuthenticated, async(req, res)=>{
         }else{
             return res.json({ message: "Success to delete", success: true});
         }
-    })
+    });
 });
 
 module.exports = router;
