@@ -84,7 +84,27 @@ function deleteUser(){
     var id = document.getElementById("modelID").value;
 
     if(window.confirm(`Delete user ${name}`)){
-        // TODO create delete user endpoint
+        $.ajax({
+            url: `/update/delete/${id}`,
+            method: "POST",
+            data: {
+                name,
+                id
+            },
+            success: (response)=>{
+                if(res.success){
+                         window.alert(`${res.message}`);
+                         window.location.replace("/admin");
+                     }else{
+                         window.alert(`${res.message}`);
+                         window.location.replace("/admin");
+                     }
+            },
+            error: (err)=>{
+                console.log(err);
+                window.alert("Could not delete user :(");
+            }
+        });
     }
 }
 
