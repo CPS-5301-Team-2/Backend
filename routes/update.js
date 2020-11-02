@@ -8,7 +8,7 @@ const ensureAdminAuthenticated = require('../config/ensureAdminAuthenticated');
 
 //userinfo update
 // does session has unique id? 
-router.post('/user/:id', async(req, res)=>{
+router.post('/user/:id', ensuredAuthenticated,async(req, res)=>{
     const {name, username, phone, email, role} = req.body;
     console.log(req.body);
 
@@ -94,12 +94,13 @@ router.get("/admin/password", ensureAdminAuthenticated, (req, res)=>{
 
 });
 
-router.post('/delete/:id', ensureAdminAuthenticated, (req, res)=>{
-    User.removeById(req.params.id, function(err, output){
+router.post('/delete/:id',  async(req, res)=>{
+    await User.findByIdAndDelete(req.params.id, (err) =>{
         if(err){
-            return res.json({message: "Unexpected Error, Try again", success: false});
+            console.log(err);
+            return res.json({ message: "Error! try again", success: false});
         }else{
-            return res.json({message: "Delete successfully", success: true});
+            return res.json({ message: "Success to delete", success: true});
         }
     })
 });
