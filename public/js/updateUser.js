@@ -39,16 +39,12 @@ function ifNull(string){
 
 function saveChanges(){
 
-    console.log("saveChanges Clicked");
-
     var id = document.getElementById("modelID").value;
     var name = document.getElementById("modelName").value;
     var username = document.getElementById("modelUsername").value;
     var email = document.getElementById("modelEmail").value;
     var phone = document.getElementById("modelPhone").value;
     var role = document.getElementById("modelRole").value;
-
-    console.log("id is: "+id);
 
    $.ajax({
        url: `/update/user/${id}`,
@@ -75,7 +71,6 @@ function saveChanges(){
        }
    });
 }
-
 
 function deleteUser(){
 
@@ -110,17 +105,15 @@ function deleteUser(){
 
 function resetPassword(){
     var id = document.getElementById("modelID");
-    var passwordElement = document.getElementById("modelPassword");
-
-    console.log("reserPassword Clicked");
+    var password = document.getElementById("modelPassword");
 
    $.ajax({
        url: `/update/admin/password/${id}`,
        method: "POST",
        data: {
-        passwordElement
+        password
        },
-       success: (response)=>{
+       success: (res)=>{
            if(res.success){
                     window.alert(`${res.message}`);
                     window.location.replace("/admin");

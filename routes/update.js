@@ -90,7 +90,7 @@ router.post('/password/:id', ensuredAuthenticated, async (req, res)=>{
 
 router.route("/admin/password/:id", ensureAdminAuthenticated, async(req, res)=>{
 
-    req.check('newPassword')
+    req.check('password')
         .isLength({min: 6})
         .withMessage("New password must contain at least 6 characters")
         .matches(/\d/)
@@ -111,7 +111,7 @@ router.route("/admin/password/:id", ensureAdminAuthenticated, async(req, res)=>{
 
     const {password} = req.body;
      //hash password
-     const newPasswordHash = await bcrypt.hash(newPassword, SALT_PASSES);
+     const newPasswordHash = await bcrypt.hash(password, SALT_PASSES);
      var user = await User.findById(req.params.id);
      user.password = newPasswordHash;
      user.save((err)=>{
