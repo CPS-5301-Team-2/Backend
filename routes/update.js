@@ -8,19 +8,24 @@ const ensureAdminAuthenticated = require('../config/ensureAdminAuthenticated');
 
 //userinfo update
 // does session has unique id? 
-router.post('/user/:id', ensureAdminAuthenticated,(req, res)=>{
+router.post('/user/:id', async(req, res)=>{
     const {name, username, phone, email, role} = req.body;
     console.log(req.body);
-    User.update({username: req.params.id}, {$set:{
-    name: name,    
-    username: username,
-    phone: phone,
-    email: email,
-    rank: role
-    }}, function(err){
+
+    var user = await User.findById(req.params.id);
+    user.name = name;
+    user.username = username;
+    user.phone = phone;
+    user.email = email;
+    user.rank = role;
+
+    user.save((err)=>{
         if(err){
             console.log(err);
-        }else{return res.json({ message: "success to update"});}
+            return res.json({ message: "Something went wrong updating", success: false});
+        }else{
+            return res.json({ message: "Successfully updated information.", success: true});
+        }
     });
 });
 
