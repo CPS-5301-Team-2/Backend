@@ -94,7 +94,7 @@ router.get("/admin/password", ensureAdminAuthenticated, (req, res)=>{
 
 });
 
-router.post('/delete/:id',  async(req, res)=>{
+router.post('/delete/:id', ensureAdminAuthenticated, async(req, res)=>{
     await User.findByIdAndDelete(req.params.id, (err) =>{
         if(err){
             console.log(err);
