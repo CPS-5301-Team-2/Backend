@@ -109,6 +109,30 @@ function deleteUser(){
 }
 
 function resetPassword(){
-    var idElement = document.getElementById("modelID");
+    var id = document.getElementById("modelID");
     var passwordElement = document.getElementById("modelPassword");
+
+    console.log("reserPassword Clicked");
+
+   $.ajax({
+       url: `/update/admin/password/${id}`,
+       method: "POST",
+       data: {
+        passwordElement
+       },
+       success: (response)=>{
+           if(res.success){
+                    window.alert(`${res.message}`);
+                    window.location.replace("/admin");
+                }else{
+                    window.alert(`${res.message}`);
+                    window.location.replace("/admin");
+                }
+       },
+       error: (err)=>{
+           console.log(err);
+           window.alert("Could not update password :(");
+       }
+   });
+
 }

@@ -88,9 +88,40 @@ router.post('/password/:id', ensuredAuthenticated, async (req, res)=>{
     });
 });
 
-router.get("/admin/password", ensureAdminAuthenticated, (req, res)=>{
+router.route("/admin/password/:id", ensureAdminAuthenticated, async(req, res)=>{
 
-    
+    req.check('newPassword')
+        .isLength({min: 6})
+        .withMessage("New password must contain at least 6 characters")
+        .matches(/\d/)
+        .withMessage("New password must contain at least 1 numeric character")
+        .matches(/[!@#\$%\^&\*]/)
+        .withMessage("New password must contain at least one special character")
+        .matches(/[A-Z]/)
+        .withMessage("New password must contain at least 1 uppercase alphabetical character");
+
+    //check for input validation causes
+    const errors = req.validationErrors();
+    //if error, show the first error
+    if(errors){
+        const firstError = errors.map(error =>error.msg)[0];
+        console.group(firstError);
+        return res.json({message: firstError, success: false});
+    }
+
+    const {password} = req.body;
+     //hash password
+     const newPasswordHash = await bcrypt.hash(newPassword, SALT_PASSES);
+     var user = await User.findById(req.params.id);
+     user.password = newPasswordHash;
+     user.save((err)=>{
+        if(err){
+            console.log(err);
+            return res.json({ message: "Something went wrong updating your password. Try again.", success: false});
+        }else{
+            return res.json({ message: "Password successfully updated.", success: true});
+        }
+    });
 
 });
 
