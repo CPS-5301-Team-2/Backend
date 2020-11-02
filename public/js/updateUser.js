@@ -39,7 +39,43 @@ function ifNull(string){
 
 function saveChanges(){
 
+    console.log("saveChanges Clicked");
+
+    var id = document.getElementById("modelID").value;
+    var name = document.getElementById("modelName").value;
+    var username = document.getElementById("modelUsername").value;
+    var email = document.getElementById("modelEmail").value;
+    var phone = document.getElementById("modelPhone").value;
+    var role = document.getElementById("modelRole").value;
+
+    console.log("id is: "+id);
+
+   $.ajax({
+       url: `/update/user/${id}`,
+       method: "POST",
+       data: {
+           name,
+           username,
+           email,
+           phone,
+           role
+       },
+       success: (response)=>{
+           if(res.success){
+                    window.alert(`${res.message}`);
+                    window.location.replace("/admin");
+                }else{
+                    window.alert(`${res.message}`);
+                    window.location.replace("/admin");
+                }
+       },
+       error: (err)=>{
+           console.log(err);
+           window.alert("Could not update user :(");
+       }
+   });
 }
+
 
 function deleteUser(){
 
