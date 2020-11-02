@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const db = require("../dbconfig")
+const app = require('../app');
 const bcrypt = require("bcryptjs");
 const User = require("../model/users");
 const SALT_PASSES = parseInt(process.env.SALT_PASSES) || 8;
@@ -88,7 +90,7 @@ router.post('/password/:id', ensuredAuthenticated, async (req, res)=>{
     });
 });
 
-router.route("/admin/password/:id", ensureAdminAuthenticated, async(req, res)=>{
+router.post("/admin/password/:id", async(req, res)=>{
 
     req.check('password')
         .isLength({min: 6})

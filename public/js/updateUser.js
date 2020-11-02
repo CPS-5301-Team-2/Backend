@@ -46,6 +46,7 @@ function saveChanges(){
     var phone = document.getElementById("modelPhone").value;
     var role = document.getElementById("modelRole").value;
 
+    console.log("id and name: "+id+name);
    $.ajax({
        url: `/update/user/${id}`,
        method: "POST",
@@ -104,9 +105,10 @@ function deleteUser(){
 }
 
 function resetPassword(){
-    var id = document.getElementById("modelID");
-    var password = document.getElementById("modelPassword");
+    var id = document.getElementById("modelID").value;
+    var password = document.getElementById("modelPassword").value;
 
+    console.log(password);
    $.ajax({
        url: `/update/admin/password/${id}`,
        method: "POST",
