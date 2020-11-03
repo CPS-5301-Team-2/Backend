@@ -7,7 +7,7 @@
   height: 100vh;
   }
 
-  #title {
+  #LoginTitle {
   font-family: Tahoma, Geneva, sans-serif;
   font-size:100px;
   color: black;
@@ -57,7 +57,7 @@
   }
 
   .bodyNav { 
-  padding-top: 85px;
+  padding-top: 75px;
   background-color: #bbaaaa; 
   }
 
@@ -68,13 +68,14 @@
        * element that contains the map. */
 #map {
   height: 100%;
+  width: 75%;
 }
 
 /* Optional: Makes the sample page fill the window. */
 html,
 body {
-  height: 100%;
-  margin: 0;
+  height: 94%;
+  margin: 5px;
   padding: 0;
 }
 
@@ -128,10 +129,9 @@ body {
   font-family: Roboto;
   font-size: 15px;
   font-weight: 300;
-  margin-left: 12px;
   padding: 0 11px 0 13px;
   text-overflow: ellipsis;
-  width: 400px;
+  width: 75%;
 }
 
 #pac-input:focus {
