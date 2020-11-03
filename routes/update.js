@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const db = require("../dbconfig")
+const app = require('../app');
 const bcrypt = require("bcryptjs");
 const User = require("../model/users");
 const SALT_PASSES = parseInt(process.env.SALT_PASSES) || 8;
