@@ -8,9 +8,8 @@ const ensureAdminAuthenticated = require('../config/ensureAdminAuthenticated');
 
 //userinfo update
 // does session has unique id? 
-router.post('/user/:id', ensuredAuthenticated,async(req, res)=>{
+router.patch('/user/:id', ensuredAuthenticated,async(req, res)=>{
     const {name, username, phone, email, role} = req.body;
-    console.log(req.body);
 
     var user = await User.findById(req.params.id);
     user.name = name;
@@ -30,7 +29,7 @@ router.post('/user/:id', ensuredAuthenticated,async(req, res)=>{
 });
 
 //password update
-router.post('/password/:id', ensuredAuthenticated, async (req, res)=>{
+router.patch('/password/:id', ensuredAuthenticated, async (req, res)=>{
     var id = req.params.id;
 
     if(req.user.id != id){
@@ -88,7 +87,7 @@ router.post('/password/:id', ensuredAuthenticated, async (req, res)=>{
     });
 });
 
-router.route("/admin/password/:id", ensureAdminAuthenticated, async(req, res)=>{
+router.patch("/admin/password/:id", ensureAdminAuthenticated, async(req, res)=>{
 
     req.check('password')
         .isLength({min: 6})
@@ -125,13 +124,13 @@ router.route("/admin/password/:id", ensureAdminAuthenticated, async(req, res)=>{
 
 });
 
-router.post('/delete/:id', ensureAdminAuthenticated, (req, res)=>{
+router.delete('/:id', ensureAdminAuthenticated, (req, res)=>{
     User.findByIdAndDelete(req.params.id, (err) =>{
         if(err){
             console.log(err);
             return res.json({ message: "Error! try again", success: false});
         }else{
-            return res.json({ message: "Success to delete", success: true});
+            return res.json({ message: "User successfully deleted.", success: true});
         }
     });
 });

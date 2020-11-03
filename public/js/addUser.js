@@ -11,15 +11,15 @@ function addUser(){
     if(window.confirm(`Add user ${user.name}?`)){
         $.ajax({
             url: "/auth/create",
-            method: "POST",
+            method: "PUT",
             data: user,
             success: (response)=>{
                 if(response.error){
                     console.log(response.error);
                     window.alert(response.error);
                 }else if(response.message){
-                    console.log(response.message.error);
-                    window.alert(response.message.error);
+                    console.log(response.message);
+                    window.alert(response.message);
 
                     document.getElementById("add-name").value = "";
                     document.getElementById("add-email").value = "";
@@ -35,7 +35,7 @@ function addUser(){
             },
             error: (err)=>{
                 console.log(err);
-                window.alert("Could not add user :(");
+                window.alert(err.responseJSON.error || "Something went wrong creating user :(");
             }
         });
     }

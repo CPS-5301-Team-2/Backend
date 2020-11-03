@@ -11,7 +11,7 @@ function updatePassword(id){
     }else{
         $.ajax({
             url: `/update/password/${id}`,
-            method: "POST",
+            method: "PATCH",
             data: {
                 password,
                 newPassword,

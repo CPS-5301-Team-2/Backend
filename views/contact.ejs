@@ -38,7 +38,7 @@
                               <th scope="row"><%= user[i].name%></th>
                               <td><%= user[i].rank%></td>
                               <td><%= user[i].phone%></td>
-                              <td><%= user[i].email%></td>
+                              <td><a href="mailto:<%= user[i].email%>"><%= user[i].email%></a></td>
                             </tr>
                           <% } %>
                         </tbody>

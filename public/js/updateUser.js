@@ -48,7 +48,7 @@ function saveChanges(){
 
    $.ajax({
        url: `/update/user/${id}`,
-       method: "POST",
+       method: "PATCH",
        data: {
            name,
            username,
@@ -80,8 +80,8 @@ function deleteUser(){
 
     if(window.confirm(`Delete user ${name}`)){
         $.ajax({
-            url: `/update/delete/${id}`,
-            method: "POST",
+            url: `/update/${id}`,
+            method: "DELETE",
             data: {
                 name,
                 id
@@ -104,22 +104,22 @@ function deleteUser(){
 }
 
 function resetPassword(){
-    var id = document.getElementById("modelID");
-    var password = document.getElementById("modelPassword");
+    var id = document.getElementById("modelID").value;
+    var password = document.getElementById("modelPassword").value;
 
    $.ajax({
        url: `/update/admin/password/${id}`,
-       method: "POST",
+       method: "PATCH",
        data: {
         password
        },
        success: (res)=>{
            if(res.success){
                     window.alert(`${res.message}`);
-                    window.location.replace("/admin");
+                    window.location.reload();
                 }else{
                     window.alert(`${res.message}`);
-                    window.location.replace("/admin");
+                    window.location.reload();
                 }
        },
        error: (err)=>{

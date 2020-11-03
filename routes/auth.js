@@ -16,7 +16,7 @@ router.post("/login",
         res.redirect('/homepage');
 });
 
-router.post("/create", ensureAdminAuthenticated, async (req,res)=>
+router.put("/create", ensureAdminAuthenticated, async (req,res)=>
 {
 
     req.check('name', "Name is required").notEmpty();
@@ -90,13 +90,14 @@ router.post("/create", ensureAdminAuthenticated, async (req,res)=>
         db.transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
               console.log(error);
+              return res.json({
+                message: "User account created, but a confirmation email could not be sent to the user.",
+              });
             }
             return res.json({
-              message: "success! email sent to the user",
+              message: "Success! User account created, and an email has been sent to the user.",
             });
           });
-
-        
 
     } catch (err){
         console.log(err.message);
