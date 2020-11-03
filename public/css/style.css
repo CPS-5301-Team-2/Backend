@@ -149,7 +149,10 @@ body {
 #target {
   width: 345px;
 }
-  
+
+#map{
+
+  border: 1px solid black;}
 
   /* Profile 
   ========================================= */
