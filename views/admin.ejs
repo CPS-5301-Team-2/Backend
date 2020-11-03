@@ -7,7 +7,8 @@
     <script src="/js/lib/jQuery-3.4.1.js"></script>
     <script src="/js/lib/bootstrap.min.js"></script>
     <script defer src="/js/addUser.js"></script>
-    <script src="/js/phoneFormat.js" defer></script>
+    <script defer src="/js/phoneFormat.js"></script>
+    <script defer src="/js/modalPhoneFormat.js"></script>
     <script src="/js/updateUser.js"></script>
 </head>
 
@@ -32,7 +33,6 @@
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                         <!-- users name -->
                          <h5 class="modal-title" id="addModalLabel">Adding New User</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
@@ -70,7 +70,7 @@
                               <div class="col-lg-5">
                                   <div class="form-group">
                                     <label id="labelProfile">Phone:</label>
-                                    <input class="form-control" type="text" name="phone" id="add-phone">
+                                    <input class="form-control" type="text" name="phone" id="add-phone" value="">
                                   </div>
                                 </div>
                           </div>

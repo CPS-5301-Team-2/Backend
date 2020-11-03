@@ -1,6 +1,6 @@
-var phoneFieldA = document.getElementById('add-phone');
-    phoneFieldA.addEventListener('keyup', function(){
-      var phoneValue = phoneFieldA.value;
+var phoneField = document.getElementById('modelPhone');
+    phoneField.addEventListener('keyup', function(){
+      var phoneValue = phoneField.value;
       var output;
       phoneValue = phoneValue.replace(/[^0-9]/g, '');
         var area = phoneValue.substr(0, 3);
@@ -13,6 +13,6 @@ var phoneFieldA = document.getElementById('add-phone');
         } else if (area.length == 3 && pre.length == 3) {
             output = "(" + area + ")" + " " + pre + "-" + tel;
         }
-      phoneFieldA.value = output;
+      phoneField.value = output;
       
     });
