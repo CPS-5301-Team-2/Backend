@@ -31,7 +31,7 @@ router.put("/create", ensureAdminAuthenticated, async (req,res)=>
         .withMessage("Password must contain at least one special character")
         .matches(/[A-Z]/)
         .withMessage("Password must contain at least 1 uppercase alphabetical character")
-    req.check('email', "Email is required").notEmpty();
+    req.check('email', "A valid email is required").isEmail().notEmpty();
     req.check('phone', "Phone number is required").notEmpty();
     req.check('rank', "Rank is required").notEmpty();
 
