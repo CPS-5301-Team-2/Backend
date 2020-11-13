@@ -22,8 +22,8 @@
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('your location'); //we can delete this 
+                // infoWindow.setPosition(pos);
+                // infoWindow.setContent('your location'); //we can delete this 
                 map.setCenter(pos);
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
