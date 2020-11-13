@@ -68,7 +68,9 @@
        * element that contains the map. */
 #map {
   height: 100%;
-  width: 75%;
+  width: 100%;
+  border: 1px solid black;
+
 }
 
 /* Optional: Makes the sample page fill the window. */
@@ -150,9 +152,22 @@ body {
   width: 345px;
 }
 
-#map{
+.container-map{
+  padding: 20px;
+  }
 
-  border: 1px solid black;}
+.containermap{
+  margin-top: 70px;
+  }
+
+  /* <!-- hm is test id for border --> */
+
+  #HM{
+    padding: 0;
+    margin: 0;
+    /* border: 1px solid black; */
+    height: 625px;
+  }
 
   /* Profile 
   ========================================= */
