@@ -57,7 +57,7 @@
   }
 
   .bodyNav { 
-  padding-top: 50px;
+  padding-top: 55px;
   background-color: #bbaaaa; 
   }
 
@@ -160,13 +160,21 @@ body {
   margin-top: 70px;
   }
 
-  /* <!-- hm is test id for border --> */
-
   #HM{
     padding: 0;
     margin: 0;
     /* border: 1px solid black; */
     height: 85vh;
+  }
+
+  #HC{
+    margin-left: 5px;
+    height: 85vh;
+  }
+
+  input[type=text-search] {
+    border: 2px solid black;
+    border-radius: 10px;
   }
 
   /* Profile 
