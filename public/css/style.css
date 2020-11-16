@@ -177,6 +177,12 @@ body {
     border-radius: 10px;
   }
 
+  #miles
+  {
+    margin-left: 5px;
+    border-radius: 10px;
+  }
+
   /* Profile 
   ========================================= */
   #labelProfile {
