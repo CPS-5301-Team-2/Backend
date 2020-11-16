@@ -183,6 +183,13 @@ body {
     border-radius: 10px;
   }
 
+  .FilterHR {
+    border: 1px solid black;
+    margin: 0%;
+    margin-bottom: 5px;
+    background-color: black
+    }
+
   /* Profile 
   ========================================= */
   #labelProfile {
