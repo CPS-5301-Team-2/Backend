@@ -190,6 +190,22 @@ body {
     background-color: black
     }
 
+  /* for :horizontal view */
+  #table-filter {
+    border: 0px solid black;
+  }
+  
+  #filterList {
+  overflow-x: hidden;
+  }
+
+  #filterCOL {
+    overflow-x: hidden;
+    height: 50vh;
+    }
+
+  
+
   /* Profile 
   ========================================= */
   #labelProfile {
