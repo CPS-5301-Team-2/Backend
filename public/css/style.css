@@ -201,10 +201,8 @@ body {
 
   #filterCOL {
     overflow-x: hidden;
-    max-height: 100%;
+    height: 375px;
     }
-
-  
 
   /* Profile 
   ========================================= */
