@@ -17,6 +17,7 @@ var indexRouter = require("./routes/index");
 var adminList = require("./routes/api/listget");
 var auth = require("./routes/auth.js");
 var update = require("./routes/update");
+var location = require("./routes/api/address");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -48,6 +49,7 @@ app.use("/", indexRouter);
 app.use("/list", adminList);
 app.use("/auth", auth);
 app.use("/update", update);
+app.use("/location",location);
 
 
 // catch 404 and forward to error handler
