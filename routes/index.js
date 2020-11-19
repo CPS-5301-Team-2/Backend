@@ -21,9 +21,12 @@ router.get('/login', (req,res)=>{
 
 // check my work bahad
 router.get('/homepage', ensuredAuthenticated, (req,res)=>{
+    var categories = require("../config/categories.json");
+    console.log(categories);
     res.render("homepage", {
         rank: req.rank,
-        name: req.user.name
+        name: req.user.name,
+        categories
     });
 });
 
