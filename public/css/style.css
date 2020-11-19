@@ -201,7 +201,7 @@ body {
 
   #filterCOL {
     overflow-x: hidden;
-    height: 50vh;
+    max-height: 100%;
     }
 
   
