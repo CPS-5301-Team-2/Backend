@@ -57,340 +57,74 @@
     <!-- modal-body -->
     <div class="container">
       <div class="row" style="height: 400px;">
-  
+        
         <div class="col col-lg-5">
-          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link active" id="pills-Service-tab" data-toggle="pill" href="#Service" role="tab" aria-controls="Service" aria-selected="true">Service</a>
-              <a class="nav-link" id="pills-Travel-tab" data-toggle="pill" href="#Travel" role="tab" aria-controls="Travel" aria-selected="false">Travel</a>
-              <a class="nav-link" id="pills-Entertainment-tab" data-toggle="pill" href="#Entertainment" role="tab" aria-controls="Entertainment" aria-selected="false">Entertainment</a>
-              <a class="nav-link" id="pills-Food-tab" data-toggle="pill" href="#Food" role="tab" aria-controls="Food" aria-selected="false">Store (food)</a>
-              <a class="nav-link" id="pills-GeneralShopping-tab" data-toggle="pill" href="#GeneralShopping" role="tab" aria-controls="GeneralShopping" aria-selected="false">General Shopping</a>
-              <a class="nav-link" id="pills-Religious-tab" data-toggle="pill" href="#Religious" role="tab" aria-controls="Religious " aria-selected="false">Religious </a>
-              <a class="nav-link" id="pills-Other-tab" data-toggle="pill" href="#Other" role="tab" aria-controls="Other" aria-selected="false">Other</a>
-          </div>
+        <div id="filter-list" class="list-group">
+          <a class="list-group-item list-group-item-action" href="#Service">Service</a>
+          <a class="list-group-item list-group-item-action" href="#Travel">Travel</a>
+          <a class="list-group-item list-group-item-action" href="#Entertainment">Entertainment</a>
+          <a class="list-group-item list-group-item-action" href="#Food">Store (food)</a>
+          <a class="list-group-item list-group-item-action" href="#General">General Shopping</a>
+          <a class="list-group-item list-group-item-action" href="#Religious">Religious</a>
+          <a class="list-group-item list-group-item-action" href="#Other">Other</a>
         </div>
-  
-        <div id="filterCOL" class="col">
-          <div class="tab-content " id="v-pills-tabContent">
-            
-            <div class="tab-pane fade show active overflow-auto" id="Service" role="tabpanel" aria-labelledby="pills-Service-tab">
-              <ul id="filterList" class="list-group">
-                <li class="list-group-item">
-                  <input type="checkbox" id="Bank" name="Bank" value="Bank">
-                  <label for="Bank"> Bank</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Car Repair</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Car Wash</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Dentist</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Beauty Salon</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Doctor</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Gas Station</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Gym</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Hair Care</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Laundry</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Locksmith</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Lodging</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Real Estate Agency</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Spa</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Storage</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Veterinary Care</label>
-                </li>
-              </ul>
-            </div>  
-  
-            <div class="tab-pane fade" id="Travel" role="tabpanel" aria-labelledby="pills-Travel-tab">
-              <ul id="filterList" class="list-group">
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Airport</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Bus Station</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Car Dealer </label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Car Rental</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Parking</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Subway Station</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Train Station</label>
-                </li>
-              </ul>
-            </div>
-            <div class="tab-pane fade" id="Entertainment" role="tabpanel" aria-labelledby="pills-Entertainment-tab">
-              <ul id="filterList" class="list-group">
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Amusement Park</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Aquarium</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Art Gallery</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Bowling Alley</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Movie Theater </label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Museum</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Night Club</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Park</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Stadium</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Tourist Attraction</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Zoo</label>
-                </li>
-              </ul>
-            </div>
-            
-            <div class="tab-pane fade" id="Food" role="tabpanel" aria-labelledby="pills-Food-tab">
-              <ul id="filterList" class="list-group">
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Bakery</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Bar</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Cafe</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Liquor Store</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Meal Takeaway</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Restaurant</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Supermarket</label>
-                </li>
-              </ul>
-            </div>
-            
-            <div class="tab-pane fade" id="GeneralShopping" role="tabpanel" aria-labelledby="pills-GeneralShopping-tab">
-              <ul id="filterList" class="list-group">
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Bicycle Store</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Bookstore </label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Clothing Store</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Convenience Store</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Department Store</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Drugstore </label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Electronics Store</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Florist</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Hardware Store</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Home Soods Store</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Jewelry Store</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Pet Store</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Pharmacy</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Shoe Store</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Shopping mall</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Store</label>
-                </li>
-                
-              </ul>
-            </div>
-            
-            <div class="tab-pane fade" id="Religious" role="tabpanel" aria-labelledby="pills-Religious-tab">
-              <ul id="filterList" class="list-group">
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Church</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Funeral Home</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Hindu Temple</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Mosque</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Synagogue</label>
-                </li>
-              </ul>
-            </div>
-            
-            <div class="tab-pane fade" id="Other" role="tabpanel" aria-labelledby="pills-Other-tab">
-              <ul id="filterList" class="list-group">
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Fire Station</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Hospital</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Police</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Post Office</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Primary School</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> School</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> Secondary School</label>
-                </li>
-                <li class="list-group-item">
-                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                  <label for="vehicle3"> University</label>
-                </li>
-                
-              </ul>
-            </div>
+      </div>
 
-          </div>
+      <div id="filterCOL" class="col">
+        <div data-spy="scroll" data-target="#filter-list" data-offset="0" class="scrollspy-example">
+
+          <h4 id="Service">Service</h4>
+          <hr>
+            <ul id="filterList" class="list-group">
+            
+           
+            </ul>
+
+          <h4 id="Travel">Travel</h4>
+          <hr>
+            <ul id="filterList" class="list-group">
+            
+           
+            </ul>
+
+          <h4 id="Entertainment">Entertainment</h4>
+          <hr>
+            <ul id="filterList" class="list-group">
+            
+           
+            </ul>
+
+          <h4 id="Food">Store (food)</h4>
+          <hr>
+            <ul id="filterList" class="list-group">
+            
+           
+            </ul>
+
+          <h4 id="General">General Shopping</h4>
+          <hr>
+            <ul id="filterList" class="list-group">
+            
+           
+            </ul>
+
+          <h4 id="Religious">Religious</h4>
+          <hr>
+            <ul id="filterList" class="list-group">
+            
+           
+            </ul>
+
+          <h4 id="Other">Other</h4>
+          <hr>
+            <ul id="filterList" class="list-group">
+            
+           
+            </ul>
+
         </div>
+      </div>
+
   
       </div>       
     </div>   
