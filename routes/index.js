@@ -20,9 +20,8 @@ router.get('/login', (req,res)=>{
 });
 
 // check my work bahad
-router.get('/homepage', ensuredAuthenticated, (req,res)=>{
+router.get('/homepage', (req,res)=>{
     var categories = require("../config/categories.json");
-    console.log(categories.Other);
     res.render("homepage", {
         services: categories.Services,
         travel: categories.Travel,

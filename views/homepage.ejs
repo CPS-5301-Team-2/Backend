@@ -9,7 +9,6 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5AtkBvlXeI567r7_tm3JlcYivAmfEmxs&callback=initAutocomplete&libraries=places&v=weekly" defer></script>
     <script src="/js/map.js"></script>
-    <script src="/js/mapData.js"></script>
 </head>
 
 <div id="nav-placeholder"></div>
@@ -69,7 +68,7 @@
                                 <ul id="filterList" class="list-group">
                                   <% for(var i in services) {%>
                                     <li>
-                                      <input type="checkbox" id="<%=services[i].name%>" name="<%=services[i].name%>" value="<%=services[i].value%>">
+                                      <input type="checkbox" id="<%=services[i].value%>" name="<%=services[i].name%>" value="<%=services[i].value%>" onclick="inputType('<%=services[i].value%>')">
                                       <label for=""><%=services[i].name%></label>
                                     </li>
                                   <% } %>
@@ -80,7 +79,7 @@
                                 <ul id="filterList" class="list-group">
                                   <%for(var i in travel) {%>
                                     <li>
-                                      <input type="checkbox" id="<%=travel[i].name%>" name="<%=travel[i].name%>" value="<%=travel[i].value%>">
+                                      <input type="checkbox" id="<%=travel[i].value%>" name="<%=travel[i].name%>" value="<%=travel[i].value%>" onclick="inputType('<%=travel[i].value%>')">
                                       <label for=""><%=travel[i].name%></label>
                                     </li>
                                   <% } %>
@@ -91,7 +90,7 @@
                                 <ul id="filterList" class="list-group">
                                   <%for(var i in entertainment) {%>
                                     <li>
-                                      <input type="checkbox" id="<%=entertainment[i].name%>" name="<%=entertainment[i].name%>" value="<%=entertainment[i].value%>">
+                                      <input type="checkbox" id="<%=entertainment[i].value%>" name="<%=entertainment[i].name%>" value="<%=entertainment[i].value%>" onclick="inputType('<%=entertainment[i].value%>')">
                                       <label for=""><%=entertainment[i].name%></label>
                                     </li>
                                   <% } %>
@@ -102,7 +101,7 @@
                                 <ul id="filterList" class="list-group">
                                   <%for(var i in store) {%>
                                     <li>
-                                      <input type="checkbox" id="<%=store[i].name%>" name="<%=store[i].name%>" value="<%=store[i].value%>">
+                                      <input type="checkbox" id="<%=store[i].value%>" name="<%=store[i].name%>" value="<%=store[i].value%>" onclick="inputType('<%=store[i].value%>')">
                                       <label for=""><%=store[i].name%></label>
                                     </li>
                                   <% } %>
@@ -113,7 +112,7 @@
                                 <ul id="filterList" class="list-group">
                                   <%for(var i in general) {%>
                                     <li>
-                                      <input type="checkbox" id="<%=general[i].name%>" name="<%=general[i].name%>" value="<%=general[i].value%>">
+                                      <input type="checkbox" id="<%=general[i].value%>" name="<%=general[i].name%>" value="<%=general[i].value%>" onclick="inputType('<%=general[i].value%>')">
                                       <label for=""><%=general[i].name%></label>
                                     </li>
                                   <% } %>
@@ -124,7 +123,7 @@
                                 <ul id="filterList" class="list-group">
                                   <%for(var i in other) {%>
                                     <li>
-                                      <input type="checkbox" id="<%=other[i].name%>" name="<%=other[i].name%>" value="<%=other[i].value%>">
+                                      <input type="checkbox" id="<%=other[i].value%>" name="<%=other[i].name%>" value="<%=other[i].value%>" onclick="inputType('<%=other[i].value%>')">
                                       <label for=""><%=other[i].name%></label>
                                     </li>
                                   <% } %>
@@ -136,7 +135,7 @@
                         </div>
                         <!-- modal-body-end -->
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-danger" data-dismiss="modal">Clear Filters</button>
+                          <button type="button" class="btn btn-danger" onclick="clearTypes()">Clear Filters</button>
                           <button type="button" class="btn btn-success" data-dismiss="modal" onclick>Add Filters</button>
                         </div>
                       </div>
@@ -144,7 +143,7 @@
                   </div>
                 </div>
                 <div class="col-9 d-flex justify-content-end">
-                  <button type="button" class="btn btn-secondary btn-sm">Add Radius</button>
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="addRadius()">Add Radius</button>
                   <input type="number" id="miles" name="miles" maxlength="3" size="3" min="1" max="300" placeholder="Miles"/>
                 </div>
               </div>
