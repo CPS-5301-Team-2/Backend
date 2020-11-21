@@ -62,13 +62,12 @@
         <div id="filter-list" class="list-group">
           
           <nav class="nav nav-pills flex-column">
-          <a class="nav-link"   href="#Service" >Service</a>
-          <a class="nav-link"   href="#Travel">Travel</a>
-          <a class="nav-link"   href="#Entertainment" >Entertainment</a>
-          <a class="nav-link"   href="#Food" >Store (food)</a>
-          <a class="nav-link"   href="#GeneralShopping" >General Shopping</a>
-          <a class="nav-link"   href="#Religious" >Religious</a>
-          <a class="nav-link"   href="#Other" href="#Other">Other</a>
+              <a class="nav-link" href="#services" >Services</a>
+              <a class="nav-link" href="#travel" >Travel</a>
+              <a class="nav-link" href="#entertainment" >Entertainment</a>
+              <a class="nav-link" href="#store" >Store (Food)</a>
+              <a class="nav-link" href="#general" >General Shopping</a>
+              <a class="nav-link" href="#other" >Other</a>
           </nav>
 
         </div>
@@ -76,55 +75,73 @@
 
       <div id="filterCOL" class="col">
         <div data-spy="scroll" data-target="#filter-list" data-offset="0">
-
-          <h4 id="Service">Service</h4>
+          <!-- Services -->
+          <h4 id="services">Services</h4>
           <hr>
-            <ul id="filterList" class="list-group">
+          <ul id="filterList" class="list-group">
+            <% for(var i in services) {%>
+              <li>
+                <input type="checkbox" id="<%=services[i].name%>" name="<%=services[i].name%>" value="<%=services[i].value%>">
+                <label for=""><%=services[i].name%></label>
+              </li>
+            <% } %>
             
-           
-            </ul>
-
-          <h4 id="Travel">Travel</h4>
+          </ul>
+          <!-- Travel -->
+          <h4 id="travel">Travel</h4>
           <hr>
-            <ul id="filterList" class="list-group">
-            
-           
-            </ul>
-
-          <h4 id="Entertainment">Entertainment</h4>
+          <ul id="filterList" class="list-group">
+            <%for(var i in travel) {%>
+              <li>
+                <input type="checkbox" id="<%=travel[i].name%>" name="<%=travel[i].name%>" value="<%=travel[i].value%>">
+                <label for=""><%=travel[i].name%></label>
+              </li>
+            <% } %>
+          </ul>
+          <!-- Entertainment -->
+          <h4 id="entertainment">Entertainment</h4>
           <hr>
-            <ul id="filterList" class="list-group">
-            
-           
-            </ul>
-
-          <h4 id="Food">Store (food)</h4>
+          <ul id="filterList" class="list-group">
+            <%for(var i in entertainment) {%>
+              <li>
+                <input type="checkbox" id="<%=entertainment[i].name%>" name="<%=entertainment[i].name%>" value="<%=entertainment[i].value%>">
+                <label for=""><%=entertainment[i].name%></label>
+              </li>
+            <% } %>
+          </ul>
+          <!-- Store (Food) -->
+          <h4 id="store">Store (Food)</h4>
           <hr>
-            <ul id="filterList" class="list-group">
-            
-           
-            </ul>
-
-          <h4 id="General">General Shopping</h4>
+          <ul id="filterList" class="list-group">
+            <%for(var i in store) {%>
+              <li>
+                <input type="checkbox" id="<%=store[i].name%>" name="<%=store[i].name%>" value="<%=store[i].value%>">
+                <label for=""><%=store[i].name%></label>
+              </li>
+            <% } %>
+          </ul>
+          <!-- General Shopping -->
+          <h4 id="general">General Shopping</h4>
           <hr>
-            <ul id="filterList" class="list-group">
-            
-           
-            </ul>
-
-          <h4 id="Religious">Religious</h4>
+          <ul id="filterList" class="list-group">
+            <%for(var i in general) {%>
+              <li>
+                <input type="checkbox" id="<%=general[i].name%>" name="<%=general[i].name%>" value="<%=general[i].value%>">
+                <label for=""><%=general[i].name%></label>
+              </li>
+            <% } %>
+          </ul>
+          <!-- Other -->
+          <h4 id="other">Other</h4>
           <hr>
-            <ul id="filterList" class="list-group">
-            
-           
-            </ul>
-
-          <h4 id="Other">Other</h4>
-          <hr>
-            <ul id="filterList" class="list-group">
-            
-           
-            </ul>
+          <ul id="filterList" class="list-group">
+            <%for(var i in other) {%>
+              <li>
+                <input type="checkbox" id="<%=other[i].name%>" name="<%=other[i].name%>" value="<%=other[i].value%>">
+                <label for=""><%=other[i].name%></label>
+              </li>
+            <% } %>
+          </ul>
 
         </div>
       </div>
@@ -137,7 +154,7 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-danger" data-dismiss="modal">Clear Filters</button>
-                          <button type="button" class="btn btn-success" data-dismiss="modal">Add Filters</button>
+                          <button type="button" class="btn btn-success" data-dismiss="modal" onclick>Add Filters</button>
                         </div>
                       </div>
                     </div>

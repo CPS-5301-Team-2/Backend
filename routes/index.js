@@ -22,11 +22,14 @@ router.get('/login', (req,res)=>{
 // check my work bahad
 router.get('/homepage', ensuredAuthenticated, (req,res)=>{
     var categories = require("../config/categories.json");
-    console.log(categories);
+    console.log(categories.Other);
     res.render("homepage", {
-        rank: req.rank,
-        name: req.user.name,
-        categories
+        services: categories.Services,
+        travel: categories.Travel,
+        entertainment: categories.Entertainment,
+        store: categories.Store,
+        general: categories.General_Shopping,
+        other: categories.Other,
     });
 });
 
