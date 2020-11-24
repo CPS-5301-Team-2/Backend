@@ -6,7 +6,7 @@ const users = require("../model/users");
 const ensureAuthenticated = require('../config/ensureAuthenticated');
 
 router.get('/', (req, res) =>{
-    res.redirect("homepage");
+    res.redirect("login");
 });
 
 router.get("/nav", (req,res)=>{
