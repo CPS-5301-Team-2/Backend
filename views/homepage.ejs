@@ -143,8 +143,9 @@
                   </div>
                 </div>
                 <div class="col-9 d-flex justify-content-end">
-                  <button type="button" class="btn btn-secondary btn-sm" onclick="addRadius()">Add Radius</button>
+                  <input type="button" value='Add Radius' class="btn btn-secondary btn-sm" onclick="addRadius(document.getElementById('miles').value)"></input>
                   <input type="number" id="miles" name="miles" maxlength="3" size="3" min="1" max="300" placeholder="Miles"/>
+                  
                 </div>
               </div>
               <hr></hr>

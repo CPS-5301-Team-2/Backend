@@ -10,7 +10,7 @@ let inputRadius = "";
 let types = [];
 
 function initAutocomplete() {
-    const map = new google.maps.Map(document.getElementById("map"), {
+     map = new google.maps.Map(document.getElementById("map"), {
     //   center: { lat: 40.6788, lng: -74.2324 },
         zoom: 16,
         mapTypeId: "roadmap",
@@ -122,4 +122,25 @@ function clearTypes(){
         document.getElementById(`${types[i]}`).checked = false;
     }
     types = [];
+}
+
+function addRadius(miles)
+{
+    var dis = miles;
+
+    if(dis > 0){
+    var gc = map.getCenter();
+
+     cityCircle = new google.maps.Circle({
+        strokeColor: "#FF0000",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#FF0000",
+        fillOpacity: 0.1,
+        map,
+        center: gc,
+        // first number is radius x*16.11
+        radius: (dis*16.11) * 100
+      });
+    }
 }
