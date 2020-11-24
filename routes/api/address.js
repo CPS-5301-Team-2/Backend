@@ -11,7 +11,7 @@ router.post("/locations", async(req,res)=>{
         const response = await got(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.678947,%20-74.232321&radius=500&type=restaurant&key=AIzaSyA5AtkBvlXeI567r7_tm3JlcYivAmfEmxs`);
         var obj = JSON.parse(response.body);
 
-        var maparr = [];
+        var mapParr = [];
         for(i=0; i<obj.results.length; i++)
         {
             var temp_json = {
@@ -23,11 +23,11 @@ router.post("/locations", async(req,res)=>{
                 "types": obj.results[i].types,
                 "vicinity": obj.results[i].vicinity
             };
-            maparr.push(temp_json);
+            mapParr.push(temp_json);
         }
 
-        res.render("homepage", {
-            mapinfo = maparr
+        res.send("homepage", {
+            mapParr
         });
 
     }catch (error){
