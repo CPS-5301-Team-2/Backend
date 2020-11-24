@@ -124,23 +124,34 @@ function clearTypes(){
     types = [];
 }
 
+var count = 0;
+
 function addRadius(miles)
 {
     var dis = miles;
-
-    if(dis > 0){
     var gc = map.getCenter();
 
-     cityCircle = new google.maps.Circle({
-        strokeColor: "#FF0000",
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: "#FF0000",
-        fillOpacity: 0.1,
-        map,
-        center: gc,
-        // first number is radius x*16.11
-        radius: (dis*16.11) * 100
-      });
+    if(count == 0)
+    {
+        if(dis > 0)
+        {
+            
+            cityCircle = new google.maps.Circle({
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.1,
+            map,
+            center: gc,
+            radius: (dis*16.11) * 100
+            });
+            count++;
+        }
+    }
+    else
+    {
+        cityCircle.setCenter(gc)
+        cityCircle.setRadius(parseFloat(  ((dis*16.11) * 100)) )
     }
 }
