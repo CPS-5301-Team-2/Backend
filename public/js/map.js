@@ -10,12 +10,25 @@ let inputRadius = "";
 let types = [];
 
 function initAutocomplete() {
+    
+    // Removes all default markers
+    var myStyles =[
+        {
+            featureType: "poi",
+            elementType: "labels",
+            stylers: [
+                  { visibility: "off" }
+            ]
+        }
+    ];
+
      map = new google.maps.Map(document.getElementById("map"), {
     //   center: { lat: 40.6788, lng: -74.2324 },
         zoom: 16,
         mapTypeId: "roadmap",
         streetViewControl: false,  
-        mapTypeControl: false
+        mapTypeControl: false,
+        styles: myStyles
     });
 
     var infoWindow = new google.maps.InfoWindow({map: map});
@@ -26,8 +39,6 @@ function initAutocomplete() {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-            // infoWindow.setPosition(pos);
-            // infoWindow.setContent('your location'); //we can delete this 
             map.setCenter(pos);
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -55,6 +66,8 @@ function initAutocomplete() {
     // more details for that place.
     searchBox.addListener("places_changed", () => {
         const places = searchBox.getPlaces();
+
+        console.log(places);
 
         if (places.length == 0) {
             return;
@@ -112,10 +125,6 @@ function inputType(type){
     console.log(types);
 }
 
-function addRadius(radius){
-    inputRadius = radius;
-}
-
 function clearTypes(){
     var typeLength = types.length;
     for(var i=0; i<typeLength; i++){
@@ -130,6 +139,7 @@ function addRadius(miles)
 {
     var dis = miles;
     var gc = map.getCenter();
+    inputRadius = miles;
 
     if(count == 0)
     {
