@@ -5,9 +5,12 @@
 // This example requires the Places library. Include the libraries=places
 // parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-let inputLocation = "";
+let inputLocation = {"lat":"", "lon":""};
 let inputRadius = "";
 let types = [];
+let map;
+let businessMarkers = [];
+let googleLocation;
 
 function initAutocomplete() {
     
@@ -53,6 +56,7 @@ function initAutocomplete() {
                                 'Error: The Geolocation service failed.' :
                                 'Error: Your browser doesn\'t support geolocation.');
     }
+
     // Create the search box and link it to the UI element.
     const input = document.getElementById("pac-input");
     const searchBox = new google.maps.places.SearchBox(input);
@@ -66,9 +70,7 @@ function initAutocomplete() {
     // more details for that place.
     searchBox.addListener("places_changed", () => {
         const places = searchBox.getPlaces();
-
-        console.log(places);
-
+       
         if (places.length == 0) {
             return;
         }
@@ -76,6 +78,9 @@ function initAutocomplete() {
         markers.forEach((marker) => {
             marker.setMap(null);
         });
+
+        clearBusinessMarkers();
+        
         markers = [];
         // For each place, get the icon, name and location.
         const bounds = new google.maps.LatLngBounds();
@@ -101,6 +106,9 @@ function initAutocomplete() {
             })
         );
 
+        inputLocation.lat = place.geometry.location.lat();
+        inputLocation.lon = place.geometry.location.lng();
+
         if (place.geometry.viewport) {
             // Only geocodes have viewport.
             bounds.union(place.geometry.viewport);
@@ -117,7 +125,9 @@ function inputType(type){
     console.log(elem.checked);
     if(types.includes(type)){
         if(!elem.checked){
-            types.pop(type);
+            types = jQuery.grep(types, (value)=>{
+                return value != type;
+            });
         }
     }else{
         types.push(type);
@@ -141,11 +151,12 @@ function addRadius(miles)
     var gc = map.getCenter();
     inputRadius = miles;
 
+    console.log(gc);
+
     if(count == 0)
     {
         if(dis > 0)
         {
-            
             cityCircle = new google.maps.Circle({
             strokeColor: "#FF0000",
             strokeOpacity: 0.8,
@@ -161,7 +172,62 @@ function addRadius(miles)
     }
     else
     {
-        cityCircle.setCenter(gc)
-        cityCircle.setRadius(parseFloat(  ((dis*16.11) * 100)) )
+        cityCircle.setCenter(gc);
+        cityCircle.setRadius(parseFloat(((dis*16.11) * 100)));
     }
+}
+
+function getLocations(){
+
+    var lat = inputLocation.lat;
+    var lon = inputLocation.lon;
+    var radius = inputRadius;
+
+    if(lat == "" || lon == ""){
+        window.alert("Search for a location before showing filtered results.");
+    }else if(radius == ""){
+        window.alert("Please enter a radius before showing filtered results.");
+    }else if(types == []){
+        window.alert("Please choose a filter before continuing.");
+    }else{
+        console.log(types);
+        var typesLength = types.length;
+        $.ajax({
+            url: "/location",
+            method: "POST",
+            data: {
+                lat: inputLocation.lat,
+                lon: inputLocation.lon,
+                radius: inputRadius,
+                types,
+                typesLength
+            },
+            success: (res)=>{
+                var locationRes = res.mapParr;
+                clearBusinessMarkers();
+                for(var i in locationRes){
+                    console.log(locationRes[i]);
+                    var position = new google.maps.LatLng(locationRes[i].lat, locationRes[i].lng);
+                    const marker = new google.maps.Marker({
+                        position,
+                        map,
+                        title: locationRes[i].name
+                    });
+
+                    businessMarkers.push(marker);
+                }
+            },
+            error: (err)=>{
+                console.log(err);
+                window.alert("Something went wrong. Refresh the page to try again.");
+            }
+        });
+    }
+}
+
+function clearBusinessMarkers(){
+    // Clears any markers put from search.
+    businessMarkers.forEach((marker)=>{
+        marker.setMap(null);
+    });
 }

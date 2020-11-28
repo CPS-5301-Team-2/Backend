@@ -20,7 +20,7 @@ router.get('/login', (req,res)=>{
 });
 
 // check my work bahad
-router.get('/homepage', (req,res)=>{
+router.get('/homepage',(req,res)=>{
     var categories = require("../config/categories.json");
     res.render("homepage", {
         services: categories.Services,
