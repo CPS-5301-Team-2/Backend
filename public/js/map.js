@@ -108,6 +108,7 @@ function initAutocomplete() {
 
         inputLocation.lat = place.geometry.location.lat();
         inputLocation.lon = place.geometry.location.lng();
+        googleLocation = place.geometry.location;
 
         if (place.geometry.viewport) {
             // Only geocodes have viewport.
@@ -148,7 +149,7 @@ var count = 0;
 function addRadius(miles)
 {
     var dis = miles;
-    var gc = map.getCenter();
+    var gc = googleLocation;
     inputRadius = miles;
 
     console.log(gc);
