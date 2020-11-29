@@ -156,25 +156,31 @@ function addRadius(miles)
 
     if(count == 0)
     {
-        if(dis > 0)
+        if(dis > 0 && dis <= 300)
         {
             cityCircle = new google.maps.Circle({
             strokeColor: "#FF0000",
             strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: "#FF0000",
-            fillOpacity: 0.1,
+            strokeWeight: 1,
+            fillColor: "blue",
+            fillOpacity: 0.05,
             map,
             center: gc,
-            radius: (dis*16.11) * 100
+            radius: (dis*1610)
             });
             count++;
         }
     }
     else
     {
-        cityCircle.setCenter(gc);
-        cityCircle.setRadius(parseFloat(((dis*16.11) * 100)));
+        if(dis >= 0 && dis <= 300)
+        {
+            cityCircle.setCenter(gc);
+            cityCircle.setRadius(parseFloat(((dis*16.11) * 100)));
+        }
+        else
+        {}
+        
     }
 }
 
