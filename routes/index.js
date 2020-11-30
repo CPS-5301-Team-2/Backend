@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var ensuredAuthenticated = require("../config/ensureAuthenticated");
 const ensureAdminAuthenticated = require("../config/ensureAdminAuthenticated");
-const users = require("../model/users");
 const ensureAuthenticated = require('../config/ensureAuthenticated');
+const users = require("../model/users");
 
 router.get('/', (req, res) =>{
     res.redirect("login");
@@ -20,7 +19,7 @@ router.get('/login', (req,res)=>{
 });
 
 // check my work bahad
-router.get('/homepage',(req,res)=>{
+router.get('/homepage', ensureAuthenticated, (req,res)=>{
     var categories = require("../config/categories.json");
     res.render("homepage", {
         services: categories.Services,
@@ -38,7 +37,7 @@ router.get('/profile', ensureAuthenticated, (req,res)=>{
     });
 });
 
-router.get('/contact', ensuredAuthenticated, async (req,res)=>{
+router.get('/contact', ensureAuthenticated, async (req,res)=>{
 
     var user = await users.find({}).select({"name": 1, "rank": 1, "phone": 1, "email": 1, "_id": 0}).lean();
     res.render("contact", {

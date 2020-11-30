@@ -4,7 +4,7 @@ var got = require('got');
 const ensureAuthenticatedAPI = require('../../config/ensureAuthenticatedAPI');
 
 
-router.post("/", async(req,res)=>{
+router.post("/", ensureAuthenticatedAPI,async(req,res)=>{
 
     var lat = req.body.lat;
     var lon = req.body.lon;
