@@ -204,6 +204,8 @@ body {
     height: 375px;
     }
 
+    .absolute-bottom {bottom:0;}
+
   /* Profile 
   ========================================= */
   #labelProfile {
