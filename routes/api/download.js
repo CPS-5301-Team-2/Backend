@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var got = require('got');
 const ensureAuthenticatedAPI = require('../../config/ensureAuthenticatedAPI');
+const converter = require('json-2-csv');
+
 
 router.post("/", ensureAuthenticatedAPI,async(req,res)=>{
 
@@ -44,9 +46,18 @@ router.post("/", ensureAuthenticatedAPI,async(req,res)=>{
                 mapParr.push(temp_json);
             }
         }
-        res.send({
-            mapParr
-        });
+
+        var fields = ['business_status', 'latitude', 'longitude', 'icon', 'name', 'types', 'vicinity'];
+        converter.json2csv({data: mapParr, fields:fields}, (err, csv)=>{
+            if(err){
+                console.log(err);
+                res.send("error during download, try again");
+            }else{
+                res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+                res.set('Content-Type', 'text/csv');
+                res.status(200).send(csv);
+            }
+        }); 
 
     }catch (error){
         console.log(error);
