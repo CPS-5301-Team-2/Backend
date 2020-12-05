@@ -67,7 +67,7 @@
                                 <ul id="filterList" class="list-group">
                                   <% for(var i in services) {%>
                                     <li>
-                                      <input type="checkbox" id="<%=services[i].value%>" name="<%=services[i].name%>" value="<%=services[i].value%>" onclick="inputType('<%=services[i].value%>')">
+                                      <input type="checkbox" id="<%=services[i].value%>" name="<%=services[i].name%>" value="<%=services[i].value%>" onclick="inputType('<%=services[i].value%>', 'services')">
                                       <label for=""><%=services[i].name%></label>
                                     </li>
                                   <% } %>
@@ -78,7 +78,7 @@
                                 <ul id="filterList" class="list-group">
                                   <%for(var i in travel) {%>
                                     <li>
-                                      <input type="checkbox" id="<%=travel[i].value%>" name="<%=travel[i].name%>" value="<%=travel[i].value%>" onclick="inputType('<%=travel[i].value%>')">
+                                      <input type="checkbox" id="<%=travel[i].value%>" name="<%=travel[i].name%>" value="<%=travel[i].value%>" onclick="inputType('<%=travel[i].value%>', 'travel')">
                                       <label for=""><%=travel[i].name%></label>
                                     </li>
                                   <% } %>
@@ -89,7 +89,7 @@
                                 <ul id="filterList" class="list-group">
                                   <%for(var i in entertainment) {%>
                                     <li>
-                                      <input type="checkbox" id="<%=entertainment[i].value%>" name="<%=entertainment[i].name%>" value="<%=entertainment[i].value%>" onclick="inputType('<%=entertainment[i].value%>')">
+                                      <input type="checkbox" id="<%=entertainment[i].value%>" name="<%=entertainment[i].name%>" value="<%=entertainment[i].value%>" onclick="inputType('<%=entertainment[i].value%>', 'entertainment')">
                                       <label for=""><%=entertainment[i].name%></label>
                                     </li>
                                   <% } %>
@@ -100,7 +100,7 @@
                                 <ul id="filterList" class="list-group">
                                   <%for(var i in store) {%>
                                     <li>
-                                      <input type="checkbox" id="<%=store[i].value%>" name="<%=store[i].name%>" value="<%=store[i].value%>" onclick="inputType('<%=store[i].value%>')">
+                                      <input type="checkbox" id="<%=store[i].value%>" name="<%=store[i].name%>" value="<%=store[i].value%>" onclick="inputType('<%=store[i].value%>', 'store')">
                                       <label for=""><%=store[i].name%></label>
                                     </li>
                                   <% } %>
@@ -111,7 +111,7 @@
                                 <ul id="filterList" class="list-group">
                                   <%for(var i in general) {%>
                                     <li>
-                                      <input type="checkbox" id="<%=general[i].value%>" name="<%=general[i].name%>" value="<%=general[i].value%>" onclick="inputType('<%=general[i].value%>')">
+                                      <input type="checkbox" id="<%=general[i].value%>" name="<%=general[i].name%>" value="<%=general[i].value%>" onclick="inputType('<%=general[i].value%>', 'general')">
                                       <label for=""><%=general[i].name%></label>
                                     </li>
                                   <% } %>
@@ -122,7 +122,7 @@
                                 <ul id="filterList" class="list-group">
                                   <%for(var i in other) {%>
                                     <li>
-                                      <input type="checkbox" id="<%=other[i].value%>" name="<%=other[i].name%>" value="<%=other[i].value%>" onclick="inputType('<%=other[i].value%>')">
+                                      <input type="checkbox" id="<%=other[i].value%>" name="<%=other[i].name%>" value="<%=other[i].value%>" onclick="inputType('<%=other[i].value%>', 'other')">
                                       <label for=""><%=other[i].name%></label>
                                     </li>
                                   <% } %>

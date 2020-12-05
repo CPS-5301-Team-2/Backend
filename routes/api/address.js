@@ -8,39 +8,27 @@ router.post("/", ensureAuthenticatedAPI,async(req,res)=>{
     var lat = req.body.lat;
     var lon = req.body.lon;
     var radius = req.body.radius; 
-    var types = req.body["types[]"];
-    var typesLength = req.body.typesLength;
-
-    // Jank fix for array issue.
-    if(typesLength <=1){
-        var word = "";
-        for(var i in types){
-            word+=types[i];
-        }
-        types = [];
-        types.push(word);
-    }
+    var types = JSON.parse(req.body.types);
 
     try{
         var mapParr = [];
-
         for(var i in types){
-            var url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},%20${lon}&radius=${getMeters(radius)}&type=${types[i]}&key=AIzaSyA5AtkBvlXeI567r7_tm3JlcYivAmfEmxs`;
+            var url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},%20${lon}&radius=${getMeters(radius)}&type=${types[i].type}&key=AIzaSyA5AtkBvlXeI567r7_tm3JlcYivAmfEmxs`;
             const response = await got(url);
             var obj = JSON.parse(response.body);
             var next_page_token = obj.next_page_token;
 
-            for(i=0; i<obj.results.length; i++)
+            for(j=0; j<obj.results.length; j++)
             {
-                console.log(obj.results[i]);
                 var temp_json = {
-                    "business_status": obj.results[i].business_status,
-                    "lat": obj.results[i].geometry.location.lat,
-                    "lng": obj.results[i].geometry.location.lng,
-                    "name": obj.results[i].name,
-                    "types": obj.results[i].types,
-                    "vicinity": obj.results[i].vicinity,
-                    "user_rating": obj.results[i].rating
+                    "business_status": obj.results[j].business_status,
+                    "lat": obj.results[j].geometry.location.lat,
+                    "lng": obj.results[j].geometry.location.lng,
+                    "name": obj.results[j].name,
+                    "types": types[i],
+                    "vicinity": obj.results[j].vicinity,
+                    "user_rating": obj.results[j].rating,
+                    "category": types[i].category
                 };
                 mapParr.push(temp_json);
             }

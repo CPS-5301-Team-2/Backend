@@ -80,7 +80,10 @@ function initAutocomplete() {
         });
 
         clearBusinessMarkers();
-        
+        document.getElementById('results_div').innerHTML=`
+        <ul class="list-group" style="width: 100%;">
+            <li class="list-group-item list-group-item-dark" style="width: 100%;">Results</li>
+        </ul>`;
         markers = [];
         // For each place, get the icon, name and location.
         const bounds = new google.maps.LatLngBounds();
@@ -121,7 +124,7 @@ function initAutocomplete() {
     });
 }
 
-function inputType(type){
+function inputType(type, category){
     var elem = document.getElementById(type);
     console.log(elem.checked);
     if(types.includes(type)){
@@ -131,7 +134,7 @@ function inputType(type){
             });
         }
     }else{
-        types.push(type);
+        types.push({type, category});
     }
     console.log(types);
 }
@@ -198,7 +201,6 @@ function getLocations(){
         window.alert("Please choose a filter before continuing.");
     }else{
         console.log(types);
-        var typesLength = types.length;
         $.ajax({
             url: "/location",
             method: "POST",
@@ -206,8 +208,7 @@ function getLocations(){
                 lat: inputLocation.lat,
                 lon: inputLocation.lon,
                 radius: inputRadius,
-                types,
-                typesLength
+                types: JSON.stringify(types)
             },
             success: (res)=>{
                 var locationRes = res.mapParr;
@@ -218,12 +219,13 @@ function getLocations(){
                     <li class="list-group-item list-group-item-dark">Results</li>
                 `;
                 for(var i in locationRes){
-                    console.log(locationRes[i]);
+
                     var position = new google.maps.LatLng(locationRes[i].lat, locationRes[i].lng);
                     var marker = new google.maps.Marker({
                         position,
                         map,
-                        title: locationRes[i].name
+                        title: locationRes[i].name,
+                        icon: {url: getIcon(locationRes[i].category)}
                     });
 
                     var infoWindow = new google.maps.InfoWindow();
@@ -267,4 +269,22 @@ function clearBusinessMarkers(){
     businessMarkers.forEach((marker)=>{
         marker.setMap(null);
     });
+}
+
+function getIcon(c){
+
+    if(c == "services"){
+        return "https://maps.google.com/mapfiles/kml/paddle/blu-stars.png";
+    }else if(c == "travel"){
+        return "https://maps.google.com/mapfiles/kml/paddle/pink-stars.png";
+    }else if(c == "entertainment"){
+        return "https://maps.google.com/mapfiles/kml/paddle/orange-stars.png";
+    }else if(c == "store"){
+        return "https://maps.google.com/mapfiles/kml/paddle/grn-stars.png";
+    }else if(c == "general"){
+        return "https://maps.google.com/mapfiles/kml/paddle/ylw-stars.png";
+    }else{
+        return "https://maps.google.com/mapfiles/kml/paddle/wht-stars.png";
+    }
+
 }
