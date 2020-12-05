@@ -32,14 +32,15 @@ router.post("/", ensureAuthenticatedAPI,async(req,res)=>{
 
             for(i=0; i<obj.results.length; i++)
             {
+                console.log(obj.results[i]);
                 var temp_json = {
                     "business_status": obj.results[i].business_status,
                     "lat": obj.results[i].geometry.location.lat,
                     "lng": obj.results[i].geometry.location.lng,
-                    "icon": obj.results[i].icon,
                     "name": obj.results[i].name,
                     "types": obj.results[i].types,
-                    "vicinity": obj.results[i].vicinity
+                    "vicinity": obj.results[i].vicinity,
+                    "user_rating": obj.results[i].rating
                 };
                 mapParr.push(temp_json);
             }

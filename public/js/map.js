@@ -220,11 +220,27 @@ function getLocations(){
                 for(var i in locationRes){
                     console.log(locationRes[i]);
                     var position = new google.maps.LatLng(locationRes[i].lat, locationRes[i].lng);
-                    const marker = new google.maps.Marker({
+                    var marker = new google.maps.Marker({
                         position,
                         map,
                         title: locationRes[i].name
                     });
+
+                    var infoWindow = new google.maps.InfoWindow();
+                    google.maps.event.addListener(marker, 'click', ((marker, i) =>
+                    {
+                        return function()
+                        {
+                            infoWindow.setContent(
+                                `
+                                <h5>${locationRes[i].name}</h5>
+                                ${locationRes[i].vicinity}
+                                `
+                            );
+                            infoWindow.open(map, marker);
+                        };
+                    })(marker, i));
+
                     businessMarkers.push(marker);
                     resultHTML += `
                     <li class="list-group-item list-group-item-info" style="width: 100%;">
@@ -233,13 +249,9 @@ function getLocations(){
                         </div>
                         <div class="address">
                             ${locationRes[i].vicinity}
-                        </div>
-                        <div class="associated_types">
-                            ${locationRes[i].types}
-                        </div>
-                    </li>`;
+                        </div>`;
                 }
-                resultHTML += '</ul>';
+                resultHTML += '</li></ul>';
                 resultDiv.innerHTML = resultHTML;
             },
             error: (err)=>{
