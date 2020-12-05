@@ -100,7 +100,7 @@ function initAutocomplete() {
         markers.push(
             new google.maps.Marker({
             map,
-            icon,
+            icon: {url: "http://maps.google.com/mapfiles/kml/pal4/icon47.png"},
             title: place.name,
             position: place.geometry.location,
             })
@@ -212,6 +212,11 @@ function getLocations(){
             success: (res)=>{
                 var locationRes = res.mapParr;
                 clearBusinessMarkers();
+                var resultDiv = document.getElementById('results_div');
+                var resultHTML = `
+                <ul class="list-group" style="width: 100%;">
+                    <li class="list-group-item list-group-item-dark">Results</li>
+                `;
                 for(var i in locationRes){
                     console.log(locationRes[i]);
                     var position = new google.maps.LatLng(locationRes[i].lat, locationRes[i].lng);
@@ -220,9 +225,22 @@ function getLocations(){
                         map,
                         title: locationRes[i].name
                     });
-
                     businessMarkers.push(marker);
+                    resultHTML += `
+                    <li class="list-group-item list-group-item-info" style="width: 100%;">
+                        <div class="name">
+                            ${locationRes[i].name}
+                        </div>
+                        <div class="address">
+                            ${locationRes[i].vicinity}
+                        </div>
+                        <div class="associated_types">
+                            ${locationRes[i].types}
+                        </div>
+                    </li>`;
                 }
+                resultHTML += '</ul>';
+                resultDiv.innerHTML = resultHTML;
             },
             error: (err)=>{
                 console.log(err);
