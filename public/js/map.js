@@ -288,3 +288,39 @@ function getIcon(c){
     }
 
 }
+
+
+var csvarr = new Array();
+
+function download(){
+    var name = document.getElementsByClassName("name");
+    var address = document.getElementsByClassName("address");
+
+    if(name.length <= 0){
+        window.alert("There is no result");
+    }else{
+        for(i=0; i<name.length; i++)
+        {
+            var nameval = (name[i].innerHTML).replace(/\s/g, "");
+            var addval = (address[i].innerHTML).replace(/\s/g, "");
+
+            nameval = nameval.replaceAll(",", "   ");
+            addval = addval.replaceAll(",", "    ");
+
+            csvarr.push(new Array(nameval,addval));
+        }
+
+        var csv = 'Name,Addresscity\n';
+        csvarr.forEach(function(row) {
+                csv += row.join(',');
+                csv += "\n";
+        });
+    
+        console.log(csv);
+        var hiddenElement = document.createElement('a');
+        hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+        hiddenElement.target = '_blank';
+        hiddenElement.download = 'REALestate_Result.csv';
+        hiddenElement.click();
+    }
+}
