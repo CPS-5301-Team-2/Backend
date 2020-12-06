@@ -290,9 +290,12 @@ function getIcon(c){
 }
 
 
+//download csv file
 var csvarr = new Array();
 
 function download(){
+    
+    //get elements 
     var name = document.getElementsByClassName("name");
     var address = document.getElementsByClassName("address");
 
@@ -310,6 +313,7 @@ function download(){
             csvarr.push(new Array(nameval,addval));
         }
 
+        //format in csv file
         var csv = 'Name,Addresscity\n';
         csvarr.forEach(function(row) {
                 csv += row.join(',');
