@@ -225,7 +225,7 @@ function getLocations(){
                         position,
                         map,
                         title: locationRes[i].name,
-                        icon: {url: getIcon(locationRes[i].category)}
+                        icon: {url: getIcon(locationRes[i].category).url}
                     });
 
                     var infoWindow = new google.maps.InfoWindow();
@@ -245,7 +245,7 @@ function getLocations(){
 
                     businessMarkers.push(marker);
                     resultHTML += `
-                    <li class="list-group-item list-group-item-info" style="width: 100%;">
+                    <li class="list-group-item list-group-item-${getIcon(locationRes[i].category).listType}" style="width: 100%;">
                         <div class="name">
                             ${locationRes[i].name}
                         </div>
@@ -274,17 +274,17 @@ function clearBusinessMarkers(){
 function getIcon(c){
 
     if(c == "services"){
-        return "https://maps.google.com/mapfiles/kml/paddle/blu-stars.png";
+        return {url: "https://maps.google.com/mapfiles/kml/paddle/blu-stars.png", listType: "primary"};
     }else if(c == "travel"){
-        return "https://maps.google.com/mapfiles/kml/paddle/pink-stars.png";
+        return {url: "https://maps.google.com/mapfiles/kml/paddle/pink-stars.png", listType: "danger"};
     }else if(c == "entertainment"){
-        return "https://maps.google.com/mapfiles/kml/paddle/orange-stars.png";
+        return {url: "https://maps.google.com/mapfiles/kml/paddle/orange-stars.png", listType: "warning"};
     }else if(c == "store"){
-        return "https://maps.google.com/mapfiles/kml/paddle/grn-stars.png";
+        return {url: "https://maps.google.com/mapfiles/kml/paddle/grn-stars.png", listType: "success"};
     }else if(c == "general"){
-        return "https://maps.google.com/mapfiles/kml/paddle/ylw-stars.png";
+        return {url: "https://maps.google.com/mapfiles/kml/paddle/ltblu-stars.png", listType: "info"};
     }else{
-        return "https://maps.google.com/mapfiles/kml/paddle/wht-stars.png";
+        return {url: "https://maps.google.com/mapfiles/kml/paddle/wht-stars.png", listType: "light"};
     }
 
 }
