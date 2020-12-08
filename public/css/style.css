@@ -195,13 +195,13 @@ body {
     border: 0px solid black;
   }
   
-  #filterList {
+  #filterList1,#filterList2,#filterList3,#filterList4,#filterList5,#filterList6 {
   overflow-x: hidden;
   }
 
   #filterCOL {
     overflow-x: hidden;
-    height: 375px;
+    height: 300px;
     }
 
     .absolute-bottom {
@@ -220,6 +220,9 @@ body {
       font-weight: bold;
       font-size: 20px;
     }
+    .fillsearch{
+      border: 2px solid black;
+      border-radius: 10px;}
   /* Profile 
   ========================================= */
   #labelProfile {
