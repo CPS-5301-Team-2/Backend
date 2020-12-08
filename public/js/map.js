@@ -140,7 +140,7 @@ function inputType(type, category){
 function clearTypes(){
     var typeLength = types.length;
     for(var i=0; i<typeLength; i++){
-        document.getElementById(`${types[i]}`).checked = false;
+        document.getElementById(`${types[i].type}`).checked = false;
     }
     types = [];
 }
