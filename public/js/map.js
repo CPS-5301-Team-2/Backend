@@ -126,12 +126,10 @@ function initAutocomplete() {
 
 function inputType(type, category){
     var elem = document.getElementById(type);
-    console.log(elem.checked);
-    if(types.includes(type)){
+    console.log(elem.checked, existInArray(type));
+    if(existInArray(type)){
         if(!elem.checked){
-            types = jQuery.grep(types, (value)=>{
-                return value != type;
-            });
+            types = removeFromArray(type);
         }
     }else{
         types.push({type, category});
@@ -327,4 +325,28 @@ function download(){
         hiddenElement.download = 'REALestate_Result.csv';
         hiddenElement.click();
     }
+}
+
+function existInArray(type){
+
+    for(var i in types){
+        if(types[i].type === type){
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function removeFromArray(type){
+    var arr = [];
+
+    for(var i in types){
+        if(types[i].type != type){
+            arr.push(types[i]);
+        }
+    }
+
+    return arr;
+
 }
