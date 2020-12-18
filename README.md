@@ -22,7 +22,7 @@ Group 1 is a commercial realty company that provides a service to our clients wh
 ### How to get started
 1. Clone repo `git clone https://github.com/CPS-5301-Team-2/Backend.git`
 2. `npm i`
-3. Create .env file in the same directory as app.js. Add env variables. 
+3. Create .env file in the same directory as app.js. Add env variables. (MONGO_URI, GOOGLE_API_KEY, GOOGLE_BACKEND_API_KEY)
 4. `npm test` to start development server
 
 ## View the demo [here](https://realtor-system.herokuapp.com)
