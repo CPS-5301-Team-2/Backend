@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var got = require('got');
 const ensureAuthenticatedAPI = require('../../config/ensureAuthenticatedAPI');
+const GOOGLE_API_KEY = require('../../config/GOOGLE_API_KEY');
 
 router.post("/", ensureAuthenticatedAPI,async(req,res)=>{
 
@@ -13,7 +14,7 @@ router.post("/", ensureAuthenticatedAPI,async(req,res)=>{
     try{
         var mapParr = [];
         for(var i in types){
-            var url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},%20${lon}&radius=${getMeters(radius)}&type=${types[i].type}&key=AIzaSyA5AtkBvlXeI567r7_tm3JlcYivAmfEmxs`;
+            var url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},%20${lon}&radius=${getMeters(radius)}&type=${types[i].type}&key=${GOOGLE_API_KEY}`;
             const response = await got(url);
             var obj = JSON.parse(response.body);
             var next_page_token = obj.next_page_token;

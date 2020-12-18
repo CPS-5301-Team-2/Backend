@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const ensureAdminAuthenticated = require("../config/ensureAdminAuthenticated");
 const ensureAuthenticated = require('../config/ensureAuthenticated');
+const GOOGLE_KEY = require('../config/GOOGLE_API_KEY');
 const users = require("../model/users");
 
 router.get('/', (req, res) =>{
@@ -28,6 +29,7 @@ router.get('/homepage', ensureAuthenticated, (req,res)=>{
         store: categories.Store,
         general: categories.General_Shopping,
         other: categories.Other,
+        GOOGLE_KEY
     });
 });
 
